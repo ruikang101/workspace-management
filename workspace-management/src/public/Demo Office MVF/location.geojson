@@ -1,0 +1,805 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5bd9bfbf13b1e7614b00001a",
+                "spaces": [
+                    {
+                        "id": "5bdb48464bd0ef18bb00001c",
+                        "map": "5bd857534bd0ef0e32000002"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [
+                    "5d07dd002b4c183b06b49cdc"
+                ],
+                "name": "Meeting Room 7",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5bdb1eb313b1e74d08000090",
+                "spaces": [
+                    {
+                        "id": "5bdb48374bd0ef18bb00001a",
+                        "map": "5bd857534bd0ef0e32000002"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [
+                    "5d07dd002b4c183b06b49cdc"
+                ],
+                "name": "Meeting Room 8",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5bdb1eca13b1e74d08000091",
+                "spaces": [
+                    {
+                        "id": "5bdb48264bd0ef18bb000018",
+                        "map": "5bd857534bd0ef0e32000002"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [
+                    "5d07dd002b4c183b06b49cdc"
+                ],
+                "name": "Meeting Room 9",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5bdb1ed713b1e74d08000092",
+                "spaces": [
+                    {
+                        "id": "5bda65d513b1e74d0800003f",
+                        "map": "5bd857534bd0ef0e32000002"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [
+                    "5d07dd002b4c183b06b49cdc"
+                ],
+                "name": "Meeting Room 10",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5bdb1ef513b1e74d08000093",
+                "spaces": [
+                    {
+                        "id": "5bdb47a84bd0ef18bb000013",
+                        "map": "5bd857534bd0ef0e32000002"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [
+                    "5d07dd002b4c183b06b49cdc"
+                ],
+                "name": "Meeting Room 11",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5bdb1f0713b1e74d08000094",
+                "spaces": [
+                    {
+                        "id": "5bdb47a84bd0ef18bb000014",
+                        "map": "5bd857534bd0ef0e32000002"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [
+                    "5d07dd002b4c183b06b49cdc"
+                ],
+                "name": "Meeting Room 12",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5d07dd01affb8060577a8c33",
+                "spaces": [
+                    {
+                        "id": "5bdb47384bd0ef18bb000011",
+                        "map": "5bd857534bd0ef0e32000002"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [
+                    "5d07dd002b4c183b06b49cdc"
+                ],
+                "name": "1on1 Room",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5d07dd01affb8060577a8c36",
+                "spaces": [
+                    {
+                        "id": "5d07d709d6a63d178d000001",
+                        "map": "5bd857534bd0ef0e32000002"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [
+                    "5d07dd002b4c183b06b49cdb"
+                ],
+                "name": "Engineering",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5d07dd01affb8060577a8c37",
+                "spaces": [
+                    {
+                        "id": "5d07d685d6a63d178d000000",
+                        "map": "5bd857534bd0ef0e32000002"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [
+                    "5d07dd002b4c183b06b49cdb"
+                ],
+                "name": "IT",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5d07dd01affb8060577a8c38",
+                "spaces": [
+                    {
+                        "id": "5d07d83ad6a63d178d000002",
+                        "map": "5bd857534bd0ef0e32000002"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [
+                    "5d07dd002b4c183b06b49cdc"
+                ],
+                "name": "Meeting Room 13",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5d07dd01affb8060577a8c3c",
+                "spaces": [
+                    {
+                        "id": "5bdb46a84bd0ef18bb00000e",
+                        "map": "5bd857534bd0ef0e32000002"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [
+                    "5d07dd002b4c183b06b49cdc"
+                ],
+                "name": "Training Room",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5dcc48634025e6230a000000",
+                "spaces": [
+                    {
+                        "id": "5bd86ba54bd0ef32880004ce",
+                        "map": "5bd856a84bd0ef0e32000001"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [],
+                "name": "Starbucks",
+                "externalId": null,
+                "states": [],
+                "logo": {
+                    "original": "https://d3j72de684fey1.cloudfront.net/uploads/c14d2fc924b06bae4b11dff16fb3eb0897982820.svg",
+                    "xsmall": "https://d3j72de684fey1.cloudfront.net/resized/dfa545ff538d334fe1c52d0ec16ced564d768773.PjEyOHgxMjg.png",
+                    "xxsmall": "https://d3j72de684fey1.cloudfront.net/resized/dfa545ff538d334fe1c52d0ec16ced564d768773.PjY0eDY0.png",
+                    "small": "https://d3j72de684fey1.cloudfront.net/resized/dfa545ff538d334fe1c52d0ec16ced564d768773.PjI1NngyNTY.png",
+                    "medium": "https://d3j72de684fey1.cloudfront.net/resized/dfa545ff538d334fe1c52d0ec16ced564d768773.PjUxMng1MTI.png",
+                    "xlarge": "https://d3j72de684fey1.cloudfront.net/resized/dfa545ff538d334fe1c52d0ec16ced564d768773.PjIwNDh4MjA0OA.png",
+                    "140x140": "https://d3j72de684fey1.cloudfront.net/resized/dfa545ff538d334fe1c52d0ec16ced564d768773.PjE0MHgxNDA.png",
+                    "66x66": "https://d3j72de684fey1.cloudfront.net/resized/dfa545ff538d334fe1c52d0ec16ced564d768773.PjY2eDY2.png",
+                    "xxlarge": "https://d3j72de684fey1.cloudfront.net/resized/dfa545ff538d334fe1c52d0ec16ced564d768773.PjQwOTZ4NDA5Ng.png",
+                    "large": "https://d3j72de684fey1.cloudfront.net/resized/dfa545ff538d334fe1c52d0ec16ced564d768773.PjEwMjR4MTAyNA.png"
+                },
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5dcc487c4025e6230a000001",
+                "spaces": [
+                    {
+                        "id": "5bd86ba54bd0ef32880004d5",
+                        "map": "5bd856a84bd0ef0e32000001"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [],
+                "name": "Pharmacy",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5dcc49d14025e6230a0004ab",
+                "spaces": [
+                    {
+                        "id": "5bd86ba54bd0ef32880004c6",
+                        "map": "5bd856a84bd0ef0e32000001"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [],
+                "name": "Quick Sandwiches",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5dcc4a314025e6230a0004ac",
+                "spaces": [
+                    {
+                        "id": "5dcc48c44025e6230a000257",
+                        "map": "5bd856a84bd0ef0e32000001"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [],
+                "name": "H&M",
+                "externalId": null,
+                "states": [],
+                "logo": {
+                    "original": "https://d3j72de684fey1.cloudfront.net/uploads/f06aca66516b48383fb9701053883916af2d692b.svg",
+                    "small": "https://d3j72de684fey1.cloudfront.net/resized/7ad25e75ce9681f2c06c6cd4ae2214f6f0a44a15.PjI1NngyNTY.png",
+                    "xsmall": "https://d3j72de684fey1.cloudfront.net/resized/7ad25e75ce9681f2c06c6cd4ae2214f6f0a44a15.PjEyOHgxMjg.png",
+                    "xlarge": "https://d3j72de684fey1.cloudfront.net/resized/7ad25e75ce9681f2c06c6cd4ae2214f6f0a44a15.PjIwNDh4MjA0OA.png",
+                    "66x66": "https://d3j72de684fey1.cloudfront.net/resized/7ad25e75ce9681f2c06c6cd4ae2214f6f0a44a15.PjY2eDY2.png",
+                    "xxsmall": "https://d3j72de684fey1.cloudfront.net/resized/7ad25e75ce9681f2c06c6cd4ae2214f6f0a44a15.PjY0eDY0.png",
+                    "xxlarge": "https://d3j72de684fey1.cloudfront.net/resized/7ad25e75ce9681f2c06c6cd4ae2214f6f0a44a15.PjQwOTZ4NDA5Ng.png",
+                    "140x140": "https://d3j72de684fey1.cloudfront.net/resized/7ad25e75ce9681f2c06c6cd4ae2214f6f0a44a15.PjE0MHgxNDA.png",
+                    "large": "https://d3j72de684fey1.cloudfront.net/resized/7ad25e75ce9681f2c06c6cd4ae2214f6f0a44a15.PjEwMjR4MTAyNA.png",
+                    "medium": "https://d3j72de684fey1.cloudfront.net/resized/7ad25e75ce9681f2c06c6cd4ae2214f6f0a44a15.PjUxMng1MTI.png"
+                },
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5dcc4b664025e6230a0004ad",
+                "spaces": [
+                    {
+                        "id": "5bd86ba54bd0ef32880004cd",
+                        "map": "5bd856a84bd0ef0e32000001"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [],
+                "name": "Men's Clothing Store",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5dcc4b824025e6230a0004ae",
+                "spaces": [
+                    {
+                        "id": "5bd86ba54bd0ef32880004cc",
+                        "map": "5bd856a84bd0ef0e32000001"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [],
+                "name": "Pizza Shop",
+                "externalId": null,
+                "states": [],
+                "logo": {
+                    "original": "https://d3j72de684fey1.cloudfront.net/uploads/eba9345d9389f3e94c8aaaca7ea8eea068a0c68b.svg",
+                    "xxsmall": "https://d3j72de684fey1.cloudfront.net/resized/980e434a87db9505f854fe5047ade56a1cb43cfd.PjY0eDY0.png",
+                    "xsmall": "https://d3j72de684fey1.cloudfront.net/resized/980e434a87db9505f854fe5047ade56a1cb43cfd.PjEyOHgxMjg.png",
+                    "large": "https://d3j72de684fey1.cloudfront.net/resized/980e434a87db9505f854fe5047ade56a1cb43cfd.PjEwMjR4MTAyNA.png",
+                    "140x140": "https://d3j72de684fey1.cloudfront.net/resized/980e434a87db9505f854fe5047ade56a1cb43cfd.PjE0MHgxNDA.png",
+                    "medium": "https://d3j72de684fey1.cloudfront.net/resized/980e434a87db9505f854fe5047ade56a1cb43cfd.PjUxMng1MTI.png",
+                    "xlarge": "https://d3j72de684fey1.cloudfront.net/resized/980e434a87db9505f854fe5047ade56a1cb43cfd.PjIwNDh4MjA0OA.png",
+                    "66x66": "https://d3j72de684fey1.cloudfront.net/resized/980e434a87db9505f854fe5047ade56a1cb43cfd.PjY2eDY2.png",
+                    "small": "https://d3j72de684fey1.cloudfront.net/resized/980e434a87db9505f854fe5047ade56a1cb43cfd.PjI1NngyNTY.png",
+                    "xxlarge": "https://d3j72de684fey1.cloudfront.net/resized/980e434a87db9505f854fe5047ade56a1cb43cfd.PjQwOTZ4NDA5Ng.png"
+                },
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5dcc4c104025e6230a0004af",
+                "spaces": [
+                    {
+                        "id": "5bd86ba54bd0ef32880004c9",
+                        "map": "5bd856a84bd0ef0e32000001"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [],
+                "name": "Sushi Eatery",
+                "externalId": null,
+                "states": [],
+                "logo": {
+                    "original": "https://d3j72de684fey1.cloudfront.net/uploads/7a00e2c41d26b539ee44e6dffe6aa3b9b3b08547.png",
+                    "xlarge": "https://d3j72de684fey1.cloudfront.net/resized/7a00e2c41d26b539ee44e6dffe6aa3b9b3b08547.PjIwNDh4MjA0OA.png",
+                    "140x140": "https://d3j72de684fey1.cloudfront.net/resized/7a00e2c41d26b539ee44e6dffe6aa3b9b3b08547.PjE0MHgxNDA.png",
+                    "66x66": "https://d3j72de684fey1.cloudfront.net/resized/7a00e2c41d26b539ee44e6dffe6aa3b9b3b08547.PjY2eDY2.png",
+                    "small": "https://d3j72de684fey1.cloudfront.net/resized/7a00e2c41d26b539ee44e6dffe6aa3b9b3b08547.PjI1NngyNTY.png",
+                    "large": "https://d3j72de684fey1.cloudfront.net/resized/7a00e2c41d26b539ee44e6dffe6aa3b9b3b08547.PjEwMjR4MTAyNA.png",
+                    "xsmall": "https://d3j72de684fey1.cloudfront.net/resized/7a00e2c41d26b539ee44e6dffe6aa3b9b3b08547.PjEyOHgxMjg.png",
+                    "medium": "https://d3j72de684fey1.cloudfront.net/resized/7a00e2c41d26b539ee44e6dffe6aa3b9b3b08547.PjUxMng1MTI.png",
+                    "xxsmall": "https://d3j72de684fey1.cloudfront.net/resized/7a00e2c41d26b539ee44e6dffe6aa3b9b3b08547.PjY0eDY0.png",
+                    "xxlarge": "https://d3j72de684fey1.cloudfront.net/resized/7a00e2c41d26b539ee44e6dffe6aa3b9b3b08547.PjQwOTZ4NDA5Ng.png"
+                },
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5dcc4c204025e6230a0004b0",
+                "spaces": [
+                    {
+                        "id": "5bd86ba54bd0ef32880004ca",
+                        "map": "5bd856a84bd0ef0e32000001"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [],
+                "name": "Bakery",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5dcc4c294025e6230a0004b1",
+                "spaces": [
+                    {
+                        "id": "5bd86ba54bd0ef32880004cb",
+                        "map": "5bd856a84bd0ef0e32000001"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [],
+                "name": "Donut Shop",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5dcc4e6f4025e6230a000dfa",
+                "spaces": [
+                    {
+                        "id": "5bdb43674bd0ef18bb000007",
+                        "map": "5bd856a84bd0ef0e32000001"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [],
+                "name": "Gym",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5dcc4f664025e61e59000251",
+                "spaces": [
+                    {
+                        "id": "5bdb42e74bd0ef18bb000003",
+                        "map": "5bd856a84bd0ef0e32000001"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [],
+                "name": "Food Court",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5dcc544a4025e6452b000000",
+                "spaces": [
+                    {
+                        "id": "5bd86ba54bd0ef32880004d0",
+                        "map": "5bd856a84bd0ef0e32000001"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [],
+                "name": "Bank",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5dcc54c74025e6452b000001",
+                "spaces": [
+                    {
+                        "id": "5bd86ba54bd0ef32880004d1",
+                        "map": "5bd856a84bd0ef0e32000001"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [],
+                "name": "Nail Salon",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5dcc54f04025e6452b000002",
+                "spaces": [
+                    {
+                        "id": "5bd86ba54bd0ef32880004d6",
+                        "map": "5bd856a84bd0ef0e32000001"
+                    }
+                ],
+                "type": "tenant",
+                "hours": null,
+                "categories": [],
+                "name": "Guest Services",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5bd9bee013b1e7614b000012",
+                "spaces": [
+                    {
+                        "id": "5bd86ac54bd0ef328800016a",
+                        "map": "5bd857534bd0ef0e32000002"
+                    },
+                    {
+                        "id": "5bd86ba44bd0ef32880004c4",
+                        "map": "5bd856a84bd0ef0e32000001"
+                    }
+                ],
+                "type": "amenity",
+                "hours": null,
+                "categories": [],
+                "name": "Male Washrooms",
+                "externalId": null,
+                "states": [],
+                "logo": {
+                    "original": "https://d3j72de684fey1.cloudfront.net/uploads/76a1ecafe7a8853bf9bd8f0dc6c8584490de36d1.svg",
+                    "small": "https://d3j72de684fey1.cloudfront.net/resized/708d96b547d73a922db48626e6945bb9dff755a6.PjI1NngyNTY.png",
+                    "140x140": "https://d3j72de684fey1.cloudfront.net/resized/708d96b547d73a922db48626e6945bb9dff755a6.PjE0MHgxNDA.png",
+                    "medium": "https://d3j72de684fey1.cloudfront.net/resized/708d96b547d73a922db48626e6945bb9dff755a6.PjUxMng1MTI.png",
+                    "large": "https://d3j72de684fey1.cloudfront.net/resized/708d96b547d73a922db48626e6945bb9dff755a6.PjEwMjR4MTAyNA.png",
+                    "xxlarge": "https://d3j72de684fey1.cloudfront.net/resized/708d96b547d73a922db48626e6945bb9dff755a6.PjQwOTZ4NDA5Ng.png",
+                    "66x66": "https://d3j72de684fey1.cloudfront.net/resized/708d96b547d73a922db48626e6945bb9dff755a6.PjY2eDY2.png",
+                    "xxsmall": "https://d3j72de684fey1.cloudfront.net/resized/708d96b547d73a922db48626e6945bb9dff755a6.PjY0eDY0.png",
+                    "xsmall": "https://d3j72de684fey1.cloudfront.net/resized/708d96b547d73a922db48626e6945bb9dff755a6.PjEyOHgxMjg.png",
+                    "xlarge": "https://d3j72de684fey1.cloudfront.net/resized/708d96b547d73a922db48626e6945bb9dff755a6.PjIwNDh4MjA0OA.png"
+                },
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5bd9bef013b1e7614b000013",
+                "spaces": [
+                    {
+                        "id": "5bd86ac54bd0ef3288000169",
+                        "map": "5bd857534bd0ef0e32000002"
+                    },
+                    {
+                        "id": "5bd86ba44bd0ef32880004c3",
+                        "map": "5bd856a84bd0ef0e32000001"
+                    }
+                ],
+                "type": "amenity",
+                "hours": null,
+                "categories": [],
+                "name": "Female Washrooms",
+                "externalId": null,
+                "states": [],
+                "logo": {
+                    "original": "https://d3j72de684fey1.cloudfront.net/uploads/898e5a758e5864b4707dbd9c6645ee7a133cad1f.svg",
+                    "xxlarge": "https://d3j72de684fey1.cloudfront.net/resized/4735b7e27e922f11b195ba7c9c4aefe4d1a7edee.PjQwOTZ4NDA5Ng.png",
+                    "large": "https://d3j72de684fey1.cloudfront.net/resized/4735b7e27e922f11b195ba7c9c4aefe4d1a7edee.PjEwMjR4MTAyNA.png",
+                    "140x140": "https://d3j72de684fey1.cloudfront.net/resized/4735b7e27e922f11b195ba7c9c4aefe4d1a7edee.PjE0MHgxNDA.png",
+                    "xlarge": "https://d3j72de684fey1.cloudfront.net/resized/4735b7e27e922f11b195ba7c9c4aefe4d1a7edee.PjIwNDh4MjA0OA.png",
+                    "66x66": "https://d3j72de684fey1.cloudfront.net/resized/4735b7e27e922f11b195ba7c9c4aefe4d1a7edee.PjY2eDY2.png",
+                    "xxsmall": "https://d3j72de684fey1.cloudfront.net/resized/4735b7e27e922f11b195ba7c9c4aefe4d1a7edee.PjY0eDY0.png",
+                    "small": "https://d3j72de684fey1.cloudfront.net/resized/4735b7e27e922f11b195ba7c9c4aefe4d1a7edee.PjI1NngyNTY.png",
+                    "xsmall": "https://d3j72de684fey1.cloudfront.net/resized/4735b7e27e922f11b195ba7c9c4aefe4d1a7edee.PjEyOHgxMjg.png",
+                    "medium": "https://d3j72de684fey1.cloudfront.net/resized/4735b7e27e922f11b195ba7c9c4aefe4d1a7edee.PjUxMng1MTI.png"
+                },
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "id": "5bdb1e6013b1e74d0800008f",
+                "spaces": [
+                    {
+                        "id": "5bdb48464bd0ef18bb00001b",
+                        "map": "5bd857534bd0ef0e32000002"
+                    },
+                    {
+                        "id": "5d07d83ad6a63d178d000003",
+                        "map": "5bd857534bd0ef0e32000002"
+                    }
+                ],
+                "type": "amenity",
+                "hours": null,
+                "categories": [],
+                "name": "Collaboration Space",
+                "externalId": null,
+                "states": [],
+                "logo": null,
+                "picture": null,
+                "address": null,
+                "phone": null,
+                "email": null,
+                "social": null
+            }
+        }
+    ]
+}
