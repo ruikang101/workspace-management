@@ -76,8 +76,6 @@ function FloorPlan() {
     //     }
     // )
 
-
-
     // map = L.map('map', {
     //     maxBounds: buildingLayer.getBounds(),
     // });
