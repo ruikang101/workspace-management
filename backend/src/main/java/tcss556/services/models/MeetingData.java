@@ -1,22 +1,25 @@
-package tcss556.services.models.requests;
+package tcss556.services.models;
 
+import lombok.Builder;
 import lombok.Data;
-import tcss556.services.models.responses.User;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.util.List;
 
+@Builder
 @Data
-public class CreateMeetingRequest {
+public class MeetingData {
+    private long meetingId;
+    private RoomData room;
     @NotNull
-    private User host;
+    private UserData host;
     @NotBlank
     private String startTime;
     @NotBlank
     private String endTime;
     @Positive
     private long RoomId;
-    private List<User> guests;
+    private List<UserData> guests;
 }

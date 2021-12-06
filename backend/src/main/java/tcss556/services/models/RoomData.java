@@ -1,22 +1,26 @@
-package tcss556.services.models.responses;
+package tcss556.services.models;
 
 import lombok.Builder;
 import lombok.Data;
 
+import javax.validation.constraints.Positive;
+
 @Data
 @Builder
-public class Room {
+public class RoomData {
     private long id;
     private String name;
-    private int cacpatiy;
+    @Positive
+    private int capacity;
     private double b_x_coordinate;
     private double b_y_coordinate;
     private double t_x_coordinate;
     private double t_y_coordinate;
+    @Positive
     private int floor;
     private RoomType type;
 
-    enum RoomType {
+    public enum RoomType {
         CONFERENCE,
         GYM,
         CUBICLE,
