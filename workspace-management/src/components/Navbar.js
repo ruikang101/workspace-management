@@ -30,8 +30,6 @@ function Navbar() {
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
             Workspace Management
-            {/* <i class="icon"></i> */}
-            {/* <i class='fab fa-typo3' /> */}
           </Link>
           <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
@@ -42,14 +40,12 @@ function Navbar() {
                 Home
               </Link>
             </li>
-            <li className='nav-item'>
-              <Link
-                to='/services'
-                className='nav-links'
-                onClick={closeMobileMenu}
-              >
-                Services
-              </Link>
+            <li className='dropdown'>
+              <button className='dropbtn'>Services</button>
+              <div class="dropdown-content">
+                <a href="/services/findaperson">Find a person</a>
+                <a href="/services/findaroom">Find a room</a>
+              </div>
             </li>
             <li className='nav-item'>
               <Link
@@ -75,7 +71,7 @@ function Navbar() {
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
-                <i class="fas fa-user"></i>
+                <i className="fas fa-user"></i>
               </Link>
             </li>
             

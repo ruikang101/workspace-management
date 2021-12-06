@@ -1,89 +1,37 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, Component } from 'react';
 import '../App.css';
 import './HomeForm.css';
-import { AccountContext } from './AccountContext';
-import styled from 'styled-components';
+import LoginForm from './LoginForm';
+import SignupForm from './SignupForm';
 
-const Form = styled.form``;
+class HomeForm extends Component {
 
-function HomeForm() {
-  const [isExpanded, setExpanded] = useState(false);
-  const [active, setActive] = useState("signin");
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: "signin",
 
-  const playExpandingAnimation = () => {
-    setExpanded(true);
-    setTimeout(() => {
-      setExpanded(false);
-    });
+    };
+    this.switchToSignin = this.switchToSignin.bind(this);
+    this.switchToSignup = this.switchToSignup.bind(this);
+  }
+
+  switchToSignup = () => {
+    this.setState({active:"signup"})
   };
 
-  const switchToSignup = () => {
-    playExpandingAnimation();
-    setTimeout(() => {
-      setActive("signup");
-    }, 400);
+  switchToSignin = () => {
+    this.setState({active:"signin"})
   };
 
-  const switchToSignin = () => {
-    playExpandingAnimation();
-    setTimeout(() => {
-      setActive("signin");
-    }, 400);
-  };
-
-  const contextValue = { switchToSignup, switchToSignin };
-
-  function LoginForm() {
+  render() {
     return (
-      <div class="login-box">
-          <h1>Login</h1>
-          <div class="textbox">
-              <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
-          </div>
-          <div class="textbox">
-              <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
-          </div>
-          <button class="btn">Sign in</button>
-          Don't have an account?  <a href="#" onClick={switchToSignup}>Signup</a>
+      <div>
+        {this.state.active === "signin" && <LoginForm  onClick={this.switchToSignup}/>}
+        {this.state.active === "signup" && <SignupForm onClick={this.switchToSignin}/>}
       </div>
-    )
+    );
   }
-
-  function SignupForm() {
-    return (
-      <Form class="login-box">
-          <h1>Signup</h1>
-          <div class="textbox">
-              <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
-          </div>
-          <div class="textbox">
-              <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
-          </div>
-          <div class="textbox">
-              <input type="text" placeholder="Name" />
-          </div>
-          <select name="department" placeholder="Department">
-            <option value="" disabled selected class="default">Select your department</option>
-            <option value="IT">IT</option>
-            <option value="Ads">Ads</option>
-            <option value="Cloud">Cloud</option>
-          </select>
-          <button class="btn">Sign up</button>
-          Already have an account?  <a href="#" onClick={switchToSignin}>Signin</a>
-      </Form>
-    )
-  }
-
-  // const { switchToSignup } = useContext(AccountContext);
-  return (
-    <div>
-      {active === "signin" ? <LoginForm /> : <SignupForm />}
-    </div>
-  );
 }
 
 export default HomeForm;

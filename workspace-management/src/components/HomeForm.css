@@ -6,7 +6,7 @@ body{
   background-size: cover;
 }
 
-.login-box{
+.HomeForm{
   width: 280px;
   position: absolute;
   top: 50%;
@@ -15,7 +15,7 @@ body{
   color: white;
 }
 
-.login-box h1{
+.HomeForm h1{
   background-color: transparent;
   border: none;
   color: white;
@@ -25,7 +25,7 @@ body{
   border-bottom: 5px solid #16a81b;
 }
 
-.textbox{
+.HomeForm .textbox{
   width: 100%;
   overflow: hidden;
   font-size: 20px;
@@ -33,12 +33,12 @@ body{
   margin: 8px 0;
   border-bottom: 3px solid #16a81b;
 }
-.textbox i{
+.HomeForm .textbox i{
   width: 26px;
   float: left;
   text-align: center;
 }
-.textbox input{
+.HomeForm .textbox input{
   border: none;
   outline: none;
   background: none;
@@ -48,12 +48,12 @@ body{
   float: left;
   margin: 0 10px;
 }
-.textbox input::placeholder {
+.HomeForm .textbox input::placeholder {
     color: white;
     font-size: 1.2em;
     font-style:italic;
   }
-.btn{
+.HomeForm .btn{
   width: 100%;
   background: none;
   border: 4px solid #4caf50;
@@ -64,11 +64,11 @@ body{
   margin: 12px 0;
 }
 
-a{
+.HomeForm a{
   color: white;
 }
 
-select{
+.HomeForm select{
   width: 100%;
   overflow: hidden;
   font-size: 20px;

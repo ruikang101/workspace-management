@@ -4,7 +4,6 @@ import FloorPlan from '../FloorPlan';
 
 function Map() {
     
-
     return (
         <>
             <FloorPlan />
