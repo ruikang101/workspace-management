@@ -1,4 +1,4 @@
-package tcss556.services.models;
+package tcss556.services.models.responses;
 
 import lombok.Builder;
 import lombok.Data;

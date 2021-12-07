@@ -3,11 +3,12 @@ package tcss556.dao;
 import tcss556.entities.UserEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserRepository {
     UserEntity createUser(UserEntity userEntity);
 
-    UserEntity getUser(long userId);
+    Optional<UserEntity> getUser(long userId);
 
     List<UserEntity> listUsers();
 

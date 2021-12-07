@@ -1,13 +1,12 @@
 package tcss556.dao;
 
 import tcss556.entities.RoomEntity;
-import tcss556.entities.RoomSortType;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface RoomRepository {
-    RoomEntity createRoom(RoomEntity room);
+    RoomEntity createRoom(RoomEntity room) throws Exception;
 
     Optional<RoomEntity> getRoom(long roomId);
 
@@ -15,11 +14,7 @@ public interface RoomRepository {
 
     List<RoomEntity> listRoomByFloor(int floor);
 
-    List<RoomEntity> listRoomsWithSort(RoomSortType sortType);
-
-    List<RoomEntity> listRoomsWithSortWithFloor(int floor, RoomSortType sortType);
-
     boolean deleteRoom(long roomId);
 
-    RoomEntity updateEntity(RoomEntity entity);
+    RoomEntity updateEntity(long roomId, RoomEntity entity) throws Exception;
 }

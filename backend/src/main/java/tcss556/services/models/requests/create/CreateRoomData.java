@@ -1,14 +1,15 @@
-package tcss556.services.models;
+package tcss556.services.models.requests.create;
 
-import lombok.Builder;
+
 import lombok.Data;
+import tcss556.services.models.RoomType;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
 @Data
-@Builder
-public class RoomData {
-    private long id;
+public class CreateRoomData {
+    @NotNull
     private String name;
     @Positive
     private int capacity;
@@ -20,11 +21,4 @@ public class RoomData {
     private int floor;
     private RoomType type;
 
-    public enum RoomType {
-        CONFERENCE,
-        GYM,
-        CUBICLE,
-        PANTRY,
-        RESTROOM
-    }
 }

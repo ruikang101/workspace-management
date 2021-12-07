@@ -8,6 +8,7 @@ import tcss556.dao.UserRepository;
 import tcss556.entities.UserEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @Profile(AppConstants.DEV_ENV)
@@ -19,7 +20,7 @@ public class MockedUserRepository implements UserRepository {
     }
 
     @Override
-    public UserEntity getUser(long userId) {
+    public Optional<UserEntity> getUser(long userId) {
         throw new NotImplementedException("not ready!");
     }
 

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import tcss556.constants.AppConstants;
 import tcss556.dao.RoomRepository;
 import tcss556.entities.RoomEntity;
-import tcss556.entities.RoomSortType;
 
 import java.util.HashMap;
 import java.util.List;
@@ -49,26 +48,13 @@ public class MockedRoomRepository implements RoomRepository {
     }
 
     @Override
-    public List<RoomEntity> listRoomsWithSort(RoomSortType sortType) {
-        throw new NotImplementedException("not ready!");
-
-    }
-
-    @Override
-    public List<RoomEntity> listRoomsWithSortWithFloor(int floor, RoomSortType sortType) {
-        throw new NotImplementedException("not ready!");
-
-    }
-
-    @Override
     public boolean deleteRoom(long roomId) {
         throw new NotImplementedException("not ready!");
 
     }
 
     @Override
-    public RoomEntity updateEntity(RoomEntity entity) {
+    public RoomEntity updateEntity(long roomId, RoomEntity entity) {
         throw new NotImplementedException("not ready!");
-
     }
 }

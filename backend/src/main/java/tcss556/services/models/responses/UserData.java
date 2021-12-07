@@ -1,7 +1,8 @@
-package tcss556.services.models;
+package tcss556.services.models.responses;
 
 import lombok.Builder;
 import lombok.Data;
+import tcss556.services.models.UserGroup;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -21,7 +22,5 @@ public class UserData {
     private double location_x;
     private double location_y;
 
-    public enum UserGroup {
-        ADMIN, USER
-    }
+
 }
