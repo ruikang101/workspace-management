@@ -1,0 +1,22 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tcss556/services/models/wsdl"
+           targetNamespace="http://tcss556/services/models/wsdl" elementFormDefault="qualified">
+
+    <xs:element name="LoginRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="password" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="LoginResponse">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SUCCEED"/>
+            <xs:enumeration value="BAD_PASSWORD"/>
+            <xs:enumeration value="NOT FOUND"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+</xs:schema>

@@ -6,7 +6,7 @@ import tcss556.entities.RoomEntity;
 import tcss556.services.models.requests.create.CreateRoomData;
 import tcss556.utils.converters.ResourceConverter;
 
-@Component("createRoomConverter")
+@Component
 public class CreateRoomConverter implements ResourceConverter<CreateRoomData, RoomEntity> {
     @Override
     public RoomEntity convert(CreateRoomData resource) {

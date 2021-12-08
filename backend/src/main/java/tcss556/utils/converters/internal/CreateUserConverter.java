@@ -6,7 +6,7 @@ import tcss556.entities.UserEntity;
 import tcss556.services.models.requests.create.CreateUserData;
 import tcss556.utils.converters.ResourceConverter;
 
-@Component("createUserConverter")
+@Component
 public class CreateUserConverter implements ResourceConverter<CreateUserData, UserEntity> {
     @Override
     public UserEntity convert(CreateUserData resource) {

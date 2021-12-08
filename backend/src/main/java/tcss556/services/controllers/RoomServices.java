@@ -1,7 +1,6 @@
 package tcss556.services.controllers;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import tcss556.dao.MeetingRepository;
@@ -21,10 +20,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RestController
 @RequestMapping("/rooms")
 public class RoomServices {
-    private static final Logger LOGGER = LoggerFactory.getLogger(RoomServices.class);
     @Resource
     private RoomRepository repository;
     @Resource
@@ -41,10 +40,10 @@ public class RoomServices {
     @PostMapping(value = "/", consumes = {"application/json"}, produces = {"application/json"})
     @ResponseBody
     public RoomData createRoom(@RequestBody CreateRoomData request) {
-        LOGGER.debug("received create room request {}", request);
+        log.debug("received create room request {}", request);
         try {
             RoomEntity entity = repository.createRoom(createRoomConverter.convert(request));
-            LOGGER.info("Successfully created room id: {}", entity.getId());
+            log.info("Successfully created room id: {}", entity.getId());
             return roomConverter.convert(entity);
         } catch (Exception e) {
             throw new InvalidParameterException(e.getMessage());
@@ -54,7 +53,7 @@ public class RoomServices {
     @GetMapping(value = "/", produces = {"application/json"})
     @ResponseBody
     public List<RoomData> listRooms(@RequestParam(value = "floor") Optional<Integer> floor) {
-        LOGGER.debug("received list room request with floor {}", floor.orElse(-1));
+        log.debug("received list room request with floor {}", floor.orElse(-1));
         List<RoomEntity> entities;
         if (floor.isPresent()) {
             entities = repository.listRoomByFloor(floor.get());
@@ -66,10 +65,10 @@ public class RoomServices {
 
     @GetMapping(value = "/{roomId}", produces = "application/json")
     @ResponseBody
-    public RoomData getRoom(@PathVariable("roomId") long roomId) {
+    public RoomData getRoom(@PathVariable("roomId") Long roomId) {
         Optional<RoomEntity> optionalRoomEntity = repository.getRoom(roomId);
         if (!optionalRoomEntity.isPresent()) {
-            throw new ResourceNotFoundException("room " + roomId);
+            throw new ResourceNotFoundException(String.format("room: %s", roomId));
         }
         return roomConverter.convert(optionalRoomEntity.get());
     }
@@ -81,7 +80,7 @@ public class RoomServices {
             RoomEntity optionalRoomEntity = repository.updateEntity(roomId, updateRoomConverter.convert(request));
             return roomConverter.convert(optionalRoomEntity);
         } catch (Exception e) {
-            LOGGER.error("Failed to update room {}, with request {}", roomId, request);
+            log.error("Failed to update room {}, with request {}", roomId, request);
             throw new InvalidParameterException("Failed to update room " + roomId);
         }
 
@@ -91,7 +90,7 @@ public class RoomServices {
     @DeleteMapping(value = "/{roomId}")
     public void deleteRoom(@PathVariable("roomId") long roomId) {
         if (!repository.deleteRoom(roomId)) {
-            LOGGER.error("Failed to delete room {}", roomId);
+            log.error("Failed to delete room {}", roomId);
             throw new InvalidParameterException("Unable to delete room " + roomId);
         }
     }

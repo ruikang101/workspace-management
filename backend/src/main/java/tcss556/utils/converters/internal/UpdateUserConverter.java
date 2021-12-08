@@ -6,7 +6,7 @@ import tcss556.entities.UserEntity;
 import tcss556.services.models.requests.update.UpdateUserData;
 import tcss556.utils.converters.ResourceConverter;
 
-@Component("updateMeetingConverter")
+@Component
 public class UpdateUserConverter implements ResourceConverter<UpdateUserData, UserEntity> {
     @Override
     public UserEntity convert(UpdateUserData resource) {
