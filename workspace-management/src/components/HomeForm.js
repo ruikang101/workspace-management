@@ -27,7 +27,7 @@ class HomeForm extends Component {
   render() {
     return (
       <div>
-        {this.state.active === "signin" && <LoginForm  onClick={this.switchToSignup}/>}
+        {this.state.active === "signin" && <LoginForm onClick={this.switchToSignup}/>}
         {this.state.active === "signup" && <SignupForm onClick={this.switchToSignin}/>}
       </div>
     );

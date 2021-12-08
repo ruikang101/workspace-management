@@ -54,19 +54,6 @@ class FloorPlan extends Component {
       )
     }
 
-    const convertRectangles = (x, y, width, height) => {
-      var x = parseFloat(x, 10);
-      var y = parseFloat(y, 10);
-      var width = parseFloat(width, 10);
-      var height = parseFloat(height, 10);
-  
-      if (x < 0 || y < 0 || width < 0 || height < 0) {
-          return '';
-      }
-  
-      return 'M' + x + ',' + y + 'L' + (x + width) + ',' + y + ' ' + (x + width) + ',' + (y + height) + ' ' + x + ',' + (y + height) + 'z';
-    }
-
     // bathroom 2/floor
     // small meeting room
     // middle meeting room

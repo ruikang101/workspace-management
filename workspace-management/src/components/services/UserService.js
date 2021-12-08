@@ -11,10 +11,15 @@ class UserService {
     }
 
     async login(username, password) {
-        await axios.post(server.api + "user/login", { username, password })
-            .then(res =>{
+        await axios.post(server.api + "user/login/", { username, password })
+            .then(res => {
                 console.log(res);
             })
+    }
+
+    async fetchUserList() {
+        const res = await axios.get(server.api + "users/");
+        return res.data;
     }
 }
 
