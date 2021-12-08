@@ -1,128 +1,21 @@
 import React, { Component } from 'react';
 import './RealTimeFloor.css';
 import pointInSvgPolygon from 'point-in-svg-polygon';
+import roomList1 from '../public/Room_data';
+import RoomContext from './RoomContext';
+import RoomService from './services/RoomService';
+import UserService from './services/UserService';
 
 // test data
-
-// empty, moderate, crowded, full
-const roomList = [
-    {
-      id: 1,
-      x: 0,
-      y: 0,
-      width: 200,
-      height: 180,
-      status: "empty",
-      density: 0.0,
-      type: "meetingroom",
-      capacity: 50,
-      floor: 1
-    },
-    {
-        id: 2,
-        x: 0,
-        y: 270,
-        width: 200,
-        height: 180,
-        status: "moderate",
-        density: 0.35,
-        type: "meetingroom",
-        capacity: 20,
-        floor: 1
-    },
-    {
-        id: 3,
-        x: 320,
-        y: 0,
-        width: 120,
-        height: 100,
-        status: "empty",
-        density: 0.0,
-        type: "meetingroom",
-        capacity: 10,
-        floor: 1
-    },
-    {
-        id: 4,
-        x: 320,
-        y: 350,
-        width: 120,
-        height: 100,
-        status: "moderate",
-        density: 0.5,
-        type: "meetingroom",
-        capacity: 10,
-        floor: 1
-    },
-    {
-        id: 5,
-        x: 440,
-        y: 0,
-        width: 120,
-        height: 100,
-        status: "crowded",
-        density: 0.7,
-        type: "meetingroom",
-        capacity: 10,
-        floor: 1
-    },
-    {
-        id: 6,
-        x: 440,
-        y: 350,
-        width: 120,
-        height: 100,
-        status: "full",
-        density: 0.8,
-        type: "meetingroom",
-        capacity: 10,
-        floor: 1
-    },
-    {
-        id: 7,
-        x: 200,
-        y: 350,
-        width: 60,
-        height: 100,
-        status: "full",
-        density: 1.0,
-        type: "bathroom",
-        capacity: 4,
-        floor: 1
-    },
-    {
-        id: 8,
-        x: 200,
-        y: 0,
-        width: 60,
-        height: 100,
-        status: "empty",
-        density: 0.0,
-        type: "bathroom",
-        capacity: 4,
-        floor: 1
-    },
-    {
-        id: 9,
-        x: 600,
-        y: 0,
-        width: 200,
-        height: 450,
-        status: "empty",
-        density: 0.02,
-        type: "diningroom",
-        capacity: 100,
-        floor: 1
-    },
-]
 
 export default class RealTimeFloor extends Component {
     constructor() {
         super();
         this.state = {
-            roomList: roomList,
+            roomList: roomList1,
             movements: [],
-            initialCoordinates: []
+            initialCoordinates: [],
+            roomsToUpdate: []
         }
         this.convertRectangles = this.convertRectangles.bind(this);
         this.updateDensity = this.updateDensity.bind(this);
@@ -132,9 +25,13 @@ export default class RealTimeFloor extends Component {
     }
 
 
-    // async componentDidMount() {
-        
-    // }
+    async componentDidMount() {
+        // !!!get roomlist
+        // let roomList = await RoomService.fetchRoomList();
+        // this.setState({
+        //     roomList: roomList
+        // })
+    }
 
     startAnimation = async() => {
         const elements = document.getElementsByTagName("animateMotion");
@@ -174,12 +71,10 @@ export default class RealTimeFloor extends Component {
         return 'M' + x + ',' + y + 'L' + (x + width) + ',' + y + ' ' + (x + width) + ',' + (y + height) + ' ' + x + ',' + (y + height) + 'z';
     }
 
-    updateDensity = () => {
+    updateDensity = async() => {
+        let roomList = this.state.roomList;
         const room = this.state.roomList[2];
         let count = room.capacity * room.density;
-        let x = 0;
-        let y = 0;
-        let id = 1;
         this.state.movements.forEach((move) => {
             if (pointInSvgPolygon.isInside([move.sequence[move.sequence.length-1].x,move.sequence[move.sequence.length-1].y], this.convertRectangles(320,0,120,100))) count++;
         })
@@ -189,6 +84,19 @@ export default class RealTimeFloor extends Component {
         roomList[2].status = room.status;
         roomList[5].status = "crowded";
         roomList[5].density = 0.6;
+        let temp = [
+            {id: 3, status: "moderate", density: 0.5},
+            {id: 6, status: "crowded", density: 0.6}
+        ]
+        // !!!update room & user
+        // await RoomService.updateRoom(3, "moderate", 0.5);
+        // await RoomService.updateRoom(6, "crowded", 0.6);
+        // await UserService.updateUser(1, 3);
+        // await UserService.updateUser(2, 3);
+        // await UserService.updateUser(3, 3);
+        // await UserService.updateUser(4, 3);
+        // await UserService.updateUser(5, 3);
+
         this.setState({
             roomList: roomList
         })
@@ -225,7 +133,7 @@ export default class RealTimeFloor extends Component {
                 color = room.status === "full" ? "red" : room.status === "crowded" ? "orange" : room.status === "moderate" ? "green" : "grey";
                 brightness = room.status === "full" ? 1.8-room.density : room.status === "crowded" ? 1.6-room.density : room.status === "moderate" ? 1.3-room.density : 1-room.density;
                 rooms.push(
-                    <rect style={{x: room.x, y: room.y, width: room.width, height: room.height, fill: color, filter: "brightness("+brightness+")"}} className={room.type} />
+                    <rect style={{x: room.coordinates[0], y: room.coordinates[1], width: room.coordinates[2], height: room.coordinates[3], fill: color, filter: "brightness("+brightness+")"}} className={room.type} />
                 )
             })
             return rooms;
@@ -259,33 +167,38 @@ export default class RealTimeFloor extends Component {
         // path="M0,0 210,0 210,-100 320,-100 320,-185"
 
         return (
-            <div className="RealTimeFloor">
-                <div className="fileupload">
-                    Upload data file from RFID
-                    <br/>
-                    <input type="file" onChange={this.uploadFile} />
-                    <br/>
-                    <button onClick={this.startAnimation}>start</button>
+            <RoomContext.Consumer>
+                {({ roomsToUpdate, update }) => (
+                <div className="RealTimeFloor">
+                    <div className="fileupload">
+                        Upload data file from RFID
+                        <br/>
+                        <input type="file" onChange={this.uploadFile} />
+                        <br/>
+                        <button onClick={this.startAnimation}>start</button>
+                    </div>
+                    <div className="canvas">
+                        <svg className="floor" width="800" height="450">
+                            {roomComponents()}
+                            {cubicles()}
+                            {points()}
+                            {movementComponents()}
+                            {/* {this.setIntervalX((this.updateDensity(), 8))} */}
+                            <text x="0" y="20" fill="white" fontSize="20px">MeetingRoom 1</text>
+                            <text x="0" y="290" fill="white" fontSize="20px">MeetingRoom 2</text>
+                            <text x="320" y="15" fill="white" fontSize="12px">MeetingRoom 3</text>
+                            <text x="320" y="365" fill="white" fontSize="12px">MeetingRoom 4</text>
+                            <text x="440" y="15" fill="white" fontSize="12px">MeetingRoom 5</text>
+                            <text x="440" y="365" fill="white" fontSize="12px">MeetingRoom 6</text>
+                            <text x="600" y="30" fill="white" fontSize="30px">DiningRoom</text>
+                            <image xlinkHref="wc.svg" x="200" y="0" height="30px" width="30px" fill="white"></image>
+                            <image xlinkHref="wc.svg" x="200" y="350" height="30px" width="30px" fill="white"></image>
+                        </svg>
+                    </div>
                 </div>
-                <div className="canvas">
-                    <svg className="floor" width="800" height="450">
-                        {roomComponents()}
-                        {cubicles()}
-                        {points()}
-                        {movementComponents()}
-                        {/* {this.setIntervalX((this.updateDensity(), 8))} */}
-                        <text x="0" y="20" fill="white" fontSize="20px">MeetingRoom 1</text>
-                        <text x="0" y="290" fill="white" fontSize="20px">MeetingRoom 2</text>
-                        <text x="320" y="15" fill="white" fontSize="12px">MeetingRoom 3</text>
-                        <text x="320" y="365" fill="white" fontSize="12px">MeetingRoom 4</text>
-                        <text x="440" y="15" fill="white" fontSize="12px">MeetingRoom 5</text>
-                        <text x="440" y="365" fill="white" fontSize="12px">MeetingRoom 6</text>
-                        <text x="600" y="30" fill="white" fontSize="30px">DiningRoom</text>
-                        <image xlinkHref="wc.svg" x="200" y="0" height="30px" width="30px" fill="white"></image>
-                        <image xlinkHref="wc.svg" x="200" y="350" height="30px" width="30px" fill="white"></image>
-                    </svg>
-                </div>
-            </div>
+                )}
+            
+            </RoomContext.Consumer>
         )
     }
 }

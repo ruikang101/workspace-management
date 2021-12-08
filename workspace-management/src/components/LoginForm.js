@@ -20,7 +20,8 @@ class InnerLoginForm extends Component {
         // waiting to be tested
         // await UserService.login(username, password);
         const navigate = this.props.navigate;
-        navigate('/personalcenter');
+        navigate('/map');
+        // navigate('/personalcenter');
     }
 
     onChange = (e) => {

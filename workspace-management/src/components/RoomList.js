@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 // import RoomService from './services/RoomService';
 import './RoomList.css';
+import roomList1 from '../public/Room_data';
+import RoomContext from './RoomContext';
 
 export default class RoomList extends Component {
     constructor() {
@@ -8,67 +10,59 @@ export default class RoomList extends Component {
         this.state = {
             rooms: []
         }
+        this.updateRoom = this.updateRoom.bind();
     }
 
     async componentDidMount() {
-        // get data
+        // !!!get data
         // let roomList = await roomService.fetchroomList();
         // this.setState({
         //     rooms: roomList
         // })
-        if (this.state.rooms.length === 0) {
-            this.setState({
-                rooms: [
-                    {
-                        id: 1,
-                        roomname: "testroom1",
-                        department: "IT",
-                        position: "meetingroom1"
-                    },
-                    {
-                        id: 2,
-                        roomname: "testroom2",
-                        department: "IT",
-                        position: "not in any room"
-                    },
-                    {
-                        id: 3,
-                        roomname: "testroom3",
-                        department: "Cloud",
-                        position: "meetingroom2"
-                    },
-                    {
-                        id: 4,
-                        roomname: "testroom4",
-                        department: "IT",
-                        position: "diningroom"
-                    },
-                ]
-            })
-        }
+        // if (this.state.rooms.length === 0) {
+        //     this.setState({
+        //         rooms: roomList
+        //     })
+        // }
+    }
+
+    updateRoom(roomsToUpdate) {
+        roomsToUpdate.forEach(room => {
+            roomList1[room.id-1].status = room.status;
+            roomList1[room.id-1].density = room.density;
+        });
     }
 
     render() {
         
         return(
-            <div className="roomlist">
-                <table>
-                    <tr className= "column">
-                        <th>ID</th>
-                        <th>roomname</th>
-                        <th>Department</th>
-                        <th>Position</th>
-                    </tr>
-                    {this.state.rooms.map(room => 
-                        <tr>
-                            <td>{room.id}</td>
-                            <td>{room.roomname}</td>
-                            <td>{room.department}</td>
-                            <td>{room.position}</td>
-                        </tr>
-                    )}
-                </table>
-            </div>
+            <RoomContext.Consumer>
+                {({ roomsToUpdate, update }) => {
+                    this.updateRoom(roomsToUpdate);
+                    return (
+                        <div className="roomlist">
+                            <table>
+                                <tr className= "column">
+                                    <th>ID</th>
+                                    <th>Status</th>
+                                    <th>Density</th>
+                                    <th>Capacity</th>
+                                    <th>Type</th>
+                                </tr>
+                                {roomList1.map(room => 
+                                    <tr>
+                                        <td>{room.id}</td>
+                                        <td>{room.status}</td>
+                                        <td>{room.density}</td>
+                                        <td>{room.capacity}</td>
+                                        <td>{room.type}</td>
+                                    </tr>
+                                )}
+                            </table>
+                        </div>
+                    )
+                }}
+            </RoomContext.Consumer>
         )
     }
 }

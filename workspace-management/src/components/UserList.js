@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import UserService from './services/UserService';
 import './UserList.css';
+import userList1 from '../public/User_data';
+import roomList1 from '../public/Room_data';
 
 
 export default class UserList extends Component {
     constructor() {
         super();
         this.state = {
-            users: []
+            users: [],
+            rooms: []
         }
     }
 
     async componentDidMount() {
-        // get data
+        // !!!get data
         // let userList = await UserService.fetchUserList();
         // this.setState({
         //     users: userList
@@ -60,12 +63,12 @@ export default class UserList extends Component {
                         <th>Department</th>
                         <th>Position</th>
                     </tr>
-                    {this.state.users.map(user => 
+                    {userList1.map(user => 
                         <tr>
                             <td>{user.id}</td>
                             <td>{user.username}</td>
                             <td>{user.department}</td>
-                            <td>{user.position}</td>
+                            <td>{user.roomId === 0 ? "Not in any room" : "In room " + user.roomId + " (" + roomList1[user.roomId-1].type + ")"}</td>
                         </tr>
                     )}
                 </table>

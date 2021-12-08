@@ -21,6 +21,13 @@ class UserService {
         const res = await axios.get(server.api + "users/");
         return res.data;
     }
+
+    async updateUser(id, roomId, ) {
+        await axios.put(server.api + "user/" + id, { roomId })
+            .then(res => {
+                console.log(res);
+            })
+    }
 }
 
 export default UserService

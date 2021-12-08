@@ -107,7 +107,7 @@ class FloorPlan extends Component {
           <line x1="335" y1="150" x2="335" y2="300" className="line" />
           <line x1="410" y1="150" x2="410" y2="300" className="line" />
           <line x1="485" y1="150" x2="485" y2="300" className="line" />
-          <circle id="circle" cx="50" cy="50" r="6" fill="black" />
+          {/* <circle id="circle" cx="50" cy="50" r="6" fill="black" /> */}
           <animate
             xlinkHref="#circle"
             attributeName="cx"
