@@ -118,6 +118,11 @@
             <artifactId>commons-validator</artifactId>
             <version>1.7</version>
         </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.7.0</version>
+        </dependency>
 
         <!--		<dependency>-->
         <!--			<groupId>org.springframework.boot</groupId>-->
@@ -142,7 +147,28 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
+<!--            <plugin>-->
+<!--                <groupId>org.codehaus.mojo</groupId>-->
+<!--                <artifactId>jaxb2-maven-plugin</artifactId>-->
+<!--                <version>2.5.0</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>xjc</id>-->
+<!--                        <goals>-->
+<!--                            <goal>xjc</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--                <configuration>-->
+<!--                    <sources>-->
+<!--                        <source>-->
+<!--                            ${project.basedir}/src/main/resources/UserLogin.xsd-->
+<!--                        </source>-->
+<!--                    </sources>-->
+<!--                    <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>-->
+<!--                    <clearOutputDir>false</clearOutputDir>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 

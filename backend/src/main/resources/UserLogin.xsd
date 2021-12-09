@@ -10,13 +10,23 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:simpleType name="LoginResponse">
+    <xs:simpleType name="LoginStatus" final="restriction">
         <xs:restriction base="xs:string">
             <xs:enumeration value="SUCCEED"/>
             <xs:enumeration value="BAD_PASSWORD"/>
             <xs:enumeration value="NOT FOUND"/>
         </xs:restriction>
     </xs:simpleType>
+
+    <xs:element name="LoginResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:string" name="token"/>
+                <xs:element type="tns:LoginStatus" name="status"/>
+            </xs:sequence>
+        </xs:complexType>
+
+    </xs:element>
 
 
 </xs:schema>
