@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import UserService from './services/UserService';
-import { useNavigate } from 'react-router-dom';
 
-class InnerSignupForm extends Component {
+class SignupForm extends Component {
     constructor() {
         super();
         this.state = {
@@ -55,11 +54,6 @@ class InnerSignupForm extends Component {
             </form>
         )
     }
-}
-
-function SignupForm() {
-    const navigate = useNavigate();
-    return <InnerSignupForm navigate={navigate} />
 }
 
 export default SignupForm

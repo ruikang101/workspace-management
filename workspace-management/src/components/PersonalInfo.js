@@ -3,29 +3,81 @@ import { Descriptions } from 'antd';
 import './PersonalInfo.css';
 import { Switch } from 'antd';
 
-export default class PersonalInfo extends Component {
-
-    render() {
-        function onChange(checked) {
-            console.log(`switch to ${checked}`);
-        }
-        return (
-            <div className="personalinfo">
-                <h2>Personal Center</h2>
-                <br />
-                <span style={{fontSize: "15px"}}>Sharing preference   </span><Switch defaultChecked onChange={onChange} />
-                <br />
-                <br />
-                <Descriptions className="descriptions" title="User Info" style={{fontSize: "20px"}} >
-                    <Descriptions.Item label="UserName"><span style={{fontSize: "20px"}}>Zhou Maomao</span></Descriptions.Item>
-                    <Descriptions.Item label="Telephone">1810000000</Descriptions.Item>
-                    <Descriptions.Item label="Live">Hangzhou, Zhejiang</Descriptions.Item>
-                    <Descriptions.Item label="Remark">empty</Descriptions.Item>
-                    <Descriptions.Item label="Address">
-                    No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China
-                    </Descriptions.Item>
-                </Descriptions>
-            </div>
-        )
-    }
+const test01 = {
+    username: "test01",
+    name: "ruikang",
+    groupId: 1,
+    department: "IT"
 }
+
+const current = {
+    last_updated: "2021-12-09 00:15",
+    temp_c: 4.4,
+    temp_f: 39.9,
+    humidity: 76
+}
+
+const PersonalInfo = () => {
+
+
+    function onChange(checked) {
+        console.log(`switch to ${checked}`);
+    }
+    return (
+        <div className="personalinfo">
+            <div><span style={{fontSize: "30px"}}>Personal Center - {test01.username}</span></div>
+            <br/>
+            <br />
+            <div className="row">
+                <div className="col">
+                    <div className="info">username: {test01.username}</div>
+                </div>
+                <div className="col">
+                    <div className="info">name: {test01.name}</div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <div className="info">group: {test01.groupId}</div>
+                </div>
+                <div className="col">
+                    <div className="info">department: {test01.department}</div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <span>sharing preference</span>
+                    <span class="tooltip"><i class="fas fa-question-circle"></i>  
+                        <span class="tooltiptext">Turn it off if you do not want anyone to find you.</span>
+                    </span>
+                    
+                </div>
+                <div className="col">
+                    <Switch defaultChecked onChange={onChange} />
+                </div>
+            </div>
+            <br/>
+            <div>
+                <span style={{fontSize: "20px"}}>Local Weather</span>
+                <div className="row">
+                    <div className="col">
+                        <div className="info">last update: {current.last_updated}</div>
+                    </div>
+                    <div className="col">
+                        <div className="info">humidity: {current.humidity}</div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col">
+                        <div className="info">temperature(C): {current.temp_c}</div>
+                    </div>
+                    <div className="col">
+                        <div className="info">temperature(F): {current.temp_f}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default PersonalInfo

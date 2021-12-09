@@ -3,35 +3,39 @@ import '../App.css';
 import './HomeForm.css';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
+import { useNavigate } from 'react-router-dom';
 
-class HomeForm extends Component {
+class InnerHomeForm extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      active: "signin",
+      active: "signup",
 
     };
-    this.switchToSignin = this.switchToSignin.bind(this);
-    this.switchToSignup = this.switchToSignup.bind(this);
   }
 
   switchToSignup = () => {
-    this.setState({active:"signup"})
+    this.setState({active:"signup"});
   };
 
   switchToSignin = () => {
-    this.setState({active:"signin"})
+    this.setState({active:"signin"});
+
   };
 
   render() {
     return (
       <div>
-        {this.state.active === "signin" && <LoginForm onClick={this.switchToSignup}/>}
-        {this.state.active === "signup" && <SignupForm onClick={this.switchToSignin}/>}
+        {this.state.active === "signin" ? <LoginForm onClick={this.switchToSignup} navigate={this.props.navigate}/> : <SignupForm onClick={this.switchToSignin} navigate={this.props.navigate}/>}
       </div>
     );
   }
+}
+
+function HomeForm() {
+  const navigate = useNavigate();
+  return <InnerHomeForm navigate={navigate} />
 }
 
 export default HomeForm;

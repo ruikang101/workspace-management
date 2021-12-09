@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { useNavigate } from 'react-router-dom';
 import UserService from './services/UserService';
+import { Link } from 'react-router-dom';
 
-class InnerLoginForm extends Component {
+class LoginForm extends Component {
     constructor() {
         super();
         this.state = {
@@ -11,6 +11,7 @@ class InnerLoginForm extends Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
+        // this.props.onClick.bind(this);
     }
 
     handleSubmit = async(e) => {
@@ -20,7 +21,7 @@ class InnerLoginForm extends Component {
         // waiting to be tested
         // await UserService.login(username, password);
         const navigate = this.props.navigate;
-        navigate('/map');
+        navigate('/personalcenter');
         // navigate('/personalcenter');
     }
 
@@ -41,15 +42,11 @@ class InnerLoginForm extends Component {
                     <input type="password" placeholder="Password" name="password" onChange={this.onChange} />
                 </div>
                 <button className="btn">Sign in</button>
-                Don't have an account?  <a href="#" onClick={this.props.onClick}>Signup</a>
+                Don't have an account?  <Link to="/" onClick={this.props.onClick}>Signup</Link>
             </form>
           )
     }
 }
 
-function LoginForm() {
-    const navigate = useNavigate();
-    return <InnerLoginForm navigate={navigate} />
-}
 
 export default LoginForm
