@@ -3,13 +3,16 @@ package tcss556.dao;
 import tcss556.entities.MeetingEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface MeetingRepository {
-    MeetingEntity getMeeting(long id);
+    Optional<MeetingEntity> getMeeting(long id);
 
-    List<MeetingEntity> listMeetings();
+    List<MeetingEntity> listMeetings(Long userId, Long roomId);
 
-    List<MeetingEntity> listMeetingsByUserId();
+    MeetingEntity createMeeting(MeetingEntity entity);
 
-    MeetingEntity createMeeting();
+    boolean deleteMeeting(long id);
+
+    MeetingEntity updateMeeting(MeetingEntity entity);
 }
