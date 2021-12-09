@@ -1,19 +1,19 @@
-table {
+.roomlist table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
 
-td, th {
+.roomlist td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
 }
 
-tr {
+.roomlist tr {
     width: 100%;
 }
 
-tr:nth-child(even) {
+.roomlist tr:nth-child(even) {
     background-color: #dddddd; 
 }

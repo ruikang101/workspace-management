@@ -1,9 +1,10 @@
 import React from 'react'
+import PersonalInfo from '../PersonalInfo'
 
 function PersonalCenter() {
     return (
         <div>
-            <h1>PersonalCenter</h1>
+            <PersonalInfo />
         </div>
     )
 }

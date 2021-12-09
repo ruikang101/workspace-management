@@ -1,0 +1,13 @@
+.personalinfo {
+    width: 80%;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 0.5px solid;
+    padding: 10px;
+}
+
+.personalinfo .ant-descriptions-view {
+    font-size: 20px;
+}
