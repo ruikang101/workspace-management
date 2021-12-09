@@ -8,28 +8,13 @@ import Users from './components/pages/Users';
 import Rooms from './components/pages/Rooms';
 import PersonalCenter from './components/pages/PersonalCenter';
 import Demo from './components/pages/Demo';
-import RoomContext from './components/RoomContext';
+import { GlobalProvider } from './components/Context/GlobalState';
 
 // check login status!!!
-class App extends React.Component {
-  constructor() {
-    super();
-    this.update = (temp) => {
-      this.setState({
-        roomsToUpdate: temp
-      })
-    }
+function App() {
 
-    this.state = {
-      roomsToUpdate: [],
-      update: this.update
-    };
-  }
-  
-
-  render(){
     return (
-      <RoomContext.Provider value={this.state}>
+      <GlobalProvider>
         <Router>
           <Navbar />
           {/* <Background /> */}
@@ -44,9 +29,8 @@ class App extends React.Component {
             <Route path='/sign-up' component={Home} /> */}
           </Routes>
         </Router>
-      </RoomContext.Provider>
+      </GlobalProvider>
     )
-  }
 }
 
 export default App;

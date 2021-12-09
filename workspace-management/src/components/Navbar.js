@@ -43,8 +43,8 @@ function Navbar() {
             <li className='dropdown'>
               <button className='dropbtn'>Services</button>
               <div class="dropdown-content">
-                <a href="/services/findaperson">Find a person</a>
-                <a href="/services/findaroom">Find a room</a>
+                <Link to="/services/findaperson">Find a person</Link>
+                <Link to="/services/findaroom">Find a room</Link>
               </div>
             </li>
             <li className='nav-item'>

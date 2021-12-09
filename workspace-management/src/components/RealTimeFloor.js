@@ -1,39 +1,54 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useContext, useEffect } from 'react';
 import './RealTimeFloor.css';
 import pointInSvgPolygon from 'point-in-svg-polygon';
 import roomList1 from '../public/Room_data';
-import RoomContext from './RoomContext';
 import RoomService from './services/RoomService';
 import UserService from './services/UserService';
+import { GlobalContext } from './Context/GlobalState';
+import myData from '../public/RFID_data.json';
 
 // test data
 
-export default class RealTimeFloor extends Component {
-    constructor() {
-        super();
-        this.state = {
-            roomList: roomList1,
-            movements: [],
-            initialCoordinates: [],
-            roomsToUpdate: []
-        }
-        this.convertRectangles = this.convertRectangles.bind(this);
-        this.updateDensity = this.updateDensity.bind(this);
-        this.uploadFile = this.uploadFile.bind(this);
-        // this.setIntervalX = this.setIntervalX.bind(this);
-        // this.interval = setInterval(this.updateDensity(), 1000);
-    }
+const RealTimeFloor = () => {
+    // constructor() {
+    //     super();
+    //     this.state = {
+    //         roomList: roomList1,
+    //         movements: [],
+    //         initialCoordinates: [],
+    //         roomsToUpdate: []
+    //     }
+    //     this.convertRectangles = this.convertRectangles.bind(this);
+    //     this.updateDensity = this.updateDensity.bind(this);
+    //     this.uploadFile = this.uploadFile.bind(this);
+    //     // this.setIntervalX = this.setIntervalX.bind(this);
+    //     // this.interval = setInterval(this.updateDensity(), 1000);
+    // }
 
 
-    async componentDidMount() {
-        // !!!get roomlist
-        // let roomList = await RoomService.fetchRoomList();
-        // this.setState({
-        //     roomList: roomList
-        // })
-    }
 
-    startAnimation = async() => {
+    // async componentDidMount() {
+    //     // !!!get roomlist
+    //     // let roomList = await RoomService.fetchRoomList();
+    //     // this.setState({
+    //     //     roomList: roomList
+    //     // })
+    // }
+
+    const {roomList, updateRoomList} = useContext(GlobalContext);
+    const [movements, updateMovements] = useState([]);
+    const [initialCoordinates, updateInitialCoordinates] = useState([]);
+    
+
+    useEffect(() => {
+        updateMovements(myData.movements);
+        updateInitialCoordinates(myData.initialCoordinates);
+        console.log(roomList);
+        updateRoomList(roomList1);
+        console.log(roomList);
+    }, [])
+
+    const startAnimation = async() => {
         const elements = document.getElementsByTagName("animateMotion");
         for (let i = 0; i < elements.length; i++) {
             elements[i].beginElement();
@@ -42,23 +57,27 @@ export default class RealTimeFloor extends Component {
             return new Promise(resolve => setTimeout(resolve, milliseconds))
         }
         await sleep(5000);
-        this.updateDensity();
+        updateDensity();
     }
 
-    uploadFile = e => {
-        const fileReader = new FileReader();
-        fileReader.readAsText(e.target.files[0], "UTF-8");
-        fileReader.onload = e => {
-            console.log("e.target.result", e.target.result);
-            this.setState({
-                movements: JSON.parse(e.target.result).movements,
-                initialCoordinates: JSON.parse(e.target.result).initialCoordinates
-            })
-        };
+    // const uploadFile = e => {
+    //     const fileReader = new FileReader();
+    //     fileReader.readAsText(e.target.files[0], "UTF-8");
+    //     fileReader.onload = e => {
+    //         console.log("e.target.result", e.target.result);
+    //         // this.setState({
+    //         //     movements: JSON.parse(e.target.result).movements,
+    //         //     initialCoordinates: JSON.parse(e.target.result).initialCoordinates
+    //         // })
+    //         updateMovements(JSON.parse(e.target.result).movements);
+    //         updateInitialCoordinates(JSON.parse(e.target.result).initialCoordinates);
+    //         console.log(movements);
+    //         console.log(initialCoordinates);
+    //     };
         
-    }
+    // }
 
-    convertRectangles = (x, y, width, height) => {
+    const convertRectangles = (x, y, width, height) => {
         var x = parseFloat(x, 10);
         var y = parseFloat(y, 10);
         var width = parseFloat(width, 10);
@@ -71,23 +90,28 @@ export default class RealTimeFloor extends Component {
         return 'M' + x + ',' + y + 'L' + (x + width) + ',' + y + ' ' + (x + width) + ',' + (y + height) + ' ' + x + ',' + (y + height) + 'z';
     }
 
-    updateDensity = async() => {
-        let roomList = this.state.roomList;
-        const room = this.state.roomList[2];
+    const updateDensity = async() => {
+        let clonedrooms = JSON.parse(JSON.stringify(roomList));
+        console.log(clonedrooms);
+        const room = clonedrooms[2];
         let count = room.capacity * room.density;
-        this.state.movements.forEach((move) => {
-            if (pointInSvgPolygon.isInside([move.sequence[move.sequence.length-1].x,move.sequence[move.sequence.length-1].y], this.convertRectangles(320,0,120,100))) count++;
+        movements.forEach((move) => {
+            if (pointInSvgPolygon.isInside([move.sequence[move.sequence.length-1].x,move.sequence[move.sequence.length-1].y], convertRectangles(320,0,120,100))) count++;
         })
         room.density = count / room.capacity;
         room.status = room.density < 0.3 ? "empty" : room.density < 0.6 ? "moderate" : room.density < 0.8 ? "crowded" : "full";
-        roomList[2].density = room.density;
-        roomList[2].status = room.status;
-        roomList[5].status = "crowded";
-        roomList[5].density = 0.6;
-        let temp = [
-            {id: 3, status: "moderate", density: 0.5},
-            {id: 6, status: "crowded", density: 0.6}
-        ]
+        clonedrooms[2].density = room.density;
+        clonedrooms[2].status = room.status;
+        clonedrooms[5].status = "crowded";
+        clonedrooms[5].density = 0.6;
+        console.log(roomList);
+        updateRoomList(clonedrooms);
+        console.log(roomList);
+
+        // let temp = [
+        //     {id: 3, status: "moderate", density: 0.5},
+        //     {id: 6, status: "crowded", density: 0.6}
+        // ]
         // !!!update room & user
         // await RoomService.updateRoom(3, "moderate", 0.5);
         // await RoomService.updateRoom(6, "crowded", 0.6);
@@ -97,20 +121,20 @@ export default class RealTimeFloor extends Component {
         // await UserService.updateUser(4, 3);
         // await UserService.updateUser(5, 3);
 
-        this.setState({
-            roomList: roomList
-        })
+        // this.setState({
+        //     roomList: roomList
+        // })
     }
-
-    render() {
 
         const points = () => {
             let p = [];
-            this.state.initialCoordinates.forEach(point => {
-                p.push(
-                    <circle id={"point"+point.id} cx={point.coordinates[0]} cy={point.coordinates[1]} r="5" fill="black" />
-                )
-            })
+            if (initialCoordinates) {
+                initialCoordinates.forEach(point => {
+                    p.push(
+                        <circle id={"point"+point.id} cx={point.coordinates[0]} cy={point.coordinates[1]} r="5" fill="black" />
+                    )
+                })
+            }
             return p;
         }
 
@@ -129,7 +153,8 @@ export default class RealTimeFloor extends Component {
             let rooms = [];
             let color = "";
             let brightness = 0.0;
-            this.state.roomList.forEach((room) => {
+            console.log(roomList);
+            roomList.forEach((room) => {
                 color = room.status === "full" ? "red" : room.status === "crowded" ? "orange" : room.status === "moderate" ? "green" : "grey";
                 brightness = room.status === "full" ? 1.8-room.density : room.status === "crowded" ? 1.6-room.density : room.status === "moderate" ? 1.3-room.density : 1-room.density;
                 rooms.push(
@@ -141,21 +166,23 @@ export default class RealTimeFloor extends Component {
 
         const movementComponents = () => {
             let m = [];
-            this.state.movements.forEach(point => {
-                let path = "M0,0";
-                point.sequence.forEach(move => {
-                    path += " " + (move.x-this.state.initialCoordinates[point.id-1].coordinates[0]) + "," + (move.y-this.state.initialCoordinates[point.id-1].coordinates[1]);
+            if (movements) {
+                movements.forEach(point => {
+                    let path = "M0,0";
+                    point.sequence.forEach(move => {
+                        path += " " + (move.x-initialCoordinates[point.id-1].coordinates[0]) + "," + (move.y-initialCoordinates[point.id-1].coordinates[1]);
+                    })
+                    m.push(
+                        <animateMotion
+                            xlinkHref={"#point"+point.id}
+                            dur={point.d}
+                            path={path}
+                            fill="freeze"
+                            begin="indefinite"
+                        />
+                    )
                 })
-                m.push(
-                    <animateMotion
-                        xlinkHref={"#point"+point.id}
-                        dur={point.d}
-                        path={path}
-                        fill="freeze"
-                        begin="indefinite"
-                    />
-                )
-            })
+            }
             return m
         }
 
@@ -167,15 +194,13 @@ export default class RealTimeFloor extends Component {
         // path="M0,0 210,0 210,-100 320,-100 320,-185"
 
         return (
-            <RoomContext.Consumer>
-                {({ roomsToUpdate, update }) => (
                 <div className="RealTimeFloor">
                     <div className="fileupload">
-                        Upload data file from RFID
+                        {/* Upload data file from RFID
                         <br/>
-                        <input type="file" onChange={this.uploadFile} />
-                        <br/>
-                        <button onClick={this.startAnimation}>start</button>
+                        <input type="file" onChange={uploadFile} />
+                        <br/> */}
+                        <button onClick={startAnimation}>start</button>
                     </div>
                     <div className="canvas">
                         <svg className="floor" width="800" height="450">
@@ -196,9 +221,10 @@ export default class RealTimeFloor extends Component {
                         </svg>
                     </div>
                 </div>
-                )}
             
-            </RoomContext.Consumer>
         )
-    }
 }
+
+export default RealTimeFloor
+
+// RealTimeFloor.context = GlobalContext;
