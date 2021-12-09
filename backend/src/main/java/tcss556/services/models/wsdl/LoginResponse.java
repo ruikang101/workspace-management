@@ -10,6 +10,7 @@ package tcss556.services.models.wsdl;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -31,6 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "LoginResponse")
 @XmlEnum
+@XmlRootElement
 public enum LoginResponse {
 
     SUCCEED("SUCCEED"),
