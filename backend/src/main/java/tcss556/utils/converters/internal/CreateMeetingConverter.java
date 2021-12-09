@@ -6,7 +6,7 @@ import tcss556.entities.MeetingEntity;
 import tcss556.services.models.requests.create.CreateMeetingData;
 import tcss556.utils.converters.ResourceConverter;
 
-@Component("createMeetingConverter")
+@Component
 public class CreateMeetingConverter implements ResourceConverter<CreateMeetingData, MeetingEntity> {
     @Override
     public MeetingEntity convert(CreateMeetingData resource) {

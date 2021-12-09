@@ -1,6 +1,6 @@
 package tcss556.services.exceptions;
 
-public class ResourceNotFoundException extends RuntimeException{
+public class ResourceNotFoundException extends RuntimeException {
 
     public ResourceNotFoundException() {
         super();
@@ -8,6 +8,10 @@ public class ResourceNotFoundException extends RuntimeException{
 
     public ResourceNotFoundException(String message) {
         super(message);
+    }
+
+    public ResourceNotFoundException(String resource, long id) {
+        super(String.format("%s:%s", resource, id));
     }
 
     public ResourceNotFoundException(String message, Throwable cause) {

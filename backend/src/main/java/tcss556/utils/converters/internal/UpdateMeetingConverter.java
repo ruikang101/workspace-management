@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import tcss556.entities.MeetingEntity;
 import tcss556.utils.converters.ResourceConverter;
 
-@Component("updateMeetingConverter")
+@Component
 public class UpdateMeetingConverter implements ResourceConverter<UpdateMeetingConverter, MeetingEntity> {
 
     @Override

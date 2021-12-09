@@ -13,12 +13,16 @@ public class CreateRoomData {
     private String name;
     @Positive
     private int capacity;
-    private double b_x_coordinate;
-    private double b_y_coordinate;
-    private double t_x_coordinate;
-    private double t_y_coordinate;
+    @NotNull
+    private Double b_x_coordinate;
+    @NotNull
+    private Double b_y_coordinate;
+    @NotNull
+    private Double t_x_coordinate;
+    @NotNull
+    private Double t_y_coordinate;
     @Positive
-    private int floor;
+    private Integer floor;
     private RoomType type;
 
 }

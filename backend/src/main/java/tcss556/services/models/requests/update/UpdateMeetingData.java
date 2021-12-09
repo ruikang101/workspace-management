@@ -6,9 +6,9 @@ import java.util.List;
 
 @Data
 public class UpdateMeetingData {
-    private long hostId;
+    private Long hostId;
     private List<Long> guests;
     private String startTime;
     private String endTime;
-    private long roomId;
+    private Long roomId;
 }

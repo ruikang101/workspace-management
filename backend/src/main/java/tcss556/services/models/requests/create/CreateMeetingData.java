@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 public class CreateMeetingData {
     @NotNull
-    private long host;
+    private Long host;
     @NotBlank
     private String startTime;
     @NotBlank
