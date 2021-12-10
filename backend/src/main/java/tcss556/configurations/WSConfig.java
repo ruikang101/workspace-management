@@ -22,7 +22,7 @@ public class WSConfig extends WsConfigurerAdapter{
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
         servlet.setApplicationContext(applicationContext);
         servlet.setTransformWsdlLocations(true);
-        return new ServletRegistrationBean<>(servlet, "/ws/*");
+        return new ServletRegistrationBean<>(servlet, "/user/*");
     }
 
     @Bean(name = "userLoginWsdl")
@@ -30,7 +30,7 @@ public class WSConfig extends WsConfigurerAdapter{
         DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
         definition.setPortTypeName("UserLoginPort");
         definition.setTargetNamespace("http://tcss556/services/models/wsdl");
-        definition.setLocationUri("/ws/userLogin");
+        definition.setLocationUri("/user/userLogin");
         definition.setSchema(userLoginSchema);
         return definition;
     }

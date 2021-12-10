@@ -9,6 +9,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import tcss556.filters.JWTFilter;
 
 import javax.annotation.Resource;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 @Configuration
 public class AppConfig implements WebMvcConfigurer {
@@ -24,6 +26,11 @@ public class AppConfig implements WebMvcConfigurer {
     @Bean
     public InetAddressValidator validator(){
         return InetAddressValidator.getInstance();
+    }
+
+    @Bean
+    public DateFormat getDataFormat(){
+        return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
     }
 
     @Override

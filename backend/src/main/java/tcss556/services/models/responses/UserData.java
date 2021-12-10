@@ -15,7 +15,6 @@ public class UserData {
     @NotNull
     @Email
     private String email;
-    private String password;
     private UserGroup group;
     private int privilege;
     private int floor;

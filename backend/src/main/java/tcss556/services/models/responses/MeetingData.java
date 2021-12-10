@@ -11,7 +11,7 @@ import java.util.List;
 @Builder
 @Data
 public class MeetingData {
-    private long meetingId;
+    private Long meetingId;
     private RoomData room;
     @NotNull
     private UserData host;
@@ -19,7 +19,5 @@ public class MeetingData {
     private String startTime;
     @NotBlank
     private String endTime;
-    @Positive
-    private long RoomId;
     private List<UserData> guests;
 }

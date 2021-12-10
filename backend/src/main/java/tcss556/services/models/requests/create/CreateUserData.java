@@ -17,7 +17,7 @@ public class CreateUserData {
     @NotNull
     private String password;
     private UserGroup group;
-    private Long privilege;
+    private Integer privilege;
     private Integer floor;
     private Double location_x;
     private Double location_y;
