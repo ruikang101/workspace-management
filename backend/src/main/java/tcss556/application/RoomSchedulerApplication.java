@@ -2,14 +2,12 @@ package tcss556.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-import tcss556.services.controllers.RoomServices;
-import tcss556.services.controllers.UserServices;
-import tcss556.services.controllers.WeatherService;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication(
-    scanBasePackageClasses = {RoomServices.class, UserServices.class, WeatherService.class})
-@ComponentScan(basePackages = "tcss556")
+@SpringBootApplication(scanBasePackages = "tcss556")
+@EnableJpaRepositories(basePackages = {"tcss556.dao", "tcss556.entities"})
+@EntityScan(basePackages = "tcss556.entities")
 public class RoomSchedulerApplication {
   public static void main(String[] args) {
     SpringApplication.run(RoomSchedulerApplication.class, args);

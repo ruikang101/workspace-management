@@ -8,13 +8,13 @@ import java.util.Optional;
 public interface RoomRepository {
   RoomEntity createRoom(RoomEntity room) throws Exception;
 
-  Optional<RoomEntity> getRoom(long roomId);
+  Optional<RoomEntity> getRoom(Long roomId);
 
   List<RoomEntity> listRooms();
 
-  List<RoomEntity> listRoomByFloor(int floor);
+  List<RoomEntity> listRoomByFloor(Integer floor);
 
-  boolean deleteRoom(long roomId);
+  boolean deleteRoom(Long roomId);
 
   void updateEntity(RoomEntity entity);
 }

@@ -11,6 +11,7 @@ import tcss556.utils.MockedRepositoryUtils;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
@@ -37,7 +38,7 @@ public class MockedRoomRepository implements RoomRepository {
   }
 
   @Override
-  public Optional<RoomEntity> getRoom(long roomId) {
+  public Optional<RoomEntity> getRoom(Long roomId) {
     return Optional.ofNullable(roomEntityMap.getOrDefault(roomId, null));
   }
 
@@ -47,14 +48,14 @@ public class MockedRoomRepository implements RoomRepository {
   }
 
   @Override
-  public List<RoomEntity> listRoomByFloor(int floor) {
+  public List<RoomEntity> listRoomByFloor(Integer floor) {
     return roomEntityMap.values().stream()
-        .filter(entity -> entity.getFloor() != null && entity.getFloor() == floor)
+        .filter(entity -> entity.getFloor() != null && Objects.equals(entity.getFloor(), floor))
         .collect(Collectors.toList());
   }
 
   @Override
-  public boolean deleteRoom(long roomId) {
+  public boolean deleteRoom(Long roomId) {
     if (!roomEntityMap.containsKey(roomId)) {
       log.error("unable to find room: {}", roomId);
       return false;

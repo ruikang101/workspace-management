@@ -1,19 +1,32 @@
 package tcss556.entities;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Data
 @Builder
+@Entity
+@Table
+@AllArgsConstructor
+@NoArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class MeetingEntity {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Getter
+  @Setter
   private Long id;
-  private Long hostId;
-  private Date startTime;
-  private Date endTime;
-  private Long roomId;
-  private List<Long> guests;
+
+  @Getter @Setter private Long hostId;
+  @Getter @Setter private Date startTime;
+  @Getter @Setter private Date endTime;
+  @Getter @Setter private Long roomId;
+
+  @Getter @Setter @ElementCollection private List<Long> guests;
 }

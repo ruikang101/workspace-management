@@ -1,19 +1,27 @@
 package tcss556.entities;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 import tcss556.services.models.UserGroup;
 
-@Data
+import javax.persistence.*;
+import java.io.Serializable;
+
 @Builder
-public class UserEntity {
-  private Long id;
-  private String username;
-  private String password;
-  private String email;
-  private Integer privilege;
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Table
+public class UserEntity implements Serializable {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Getter @Setter private Long id;
+  @Getter @Setter private String username;
+  @Getter @Setter private String password;
+  @Getter @Setter private String email;
+  @Getter @Setter private Integer privilege;
+  @Enumerated(EnumType.STRING)
   @Builder.Default private UserGroup userGroup = UserGroup.USER;
-  private Integer floor;
-  private Double location_x;
-  private Double location_y;
+  @Getter @Setter private Integer floor;
+  @Getter @Setter private Double location_x;
+  @Getter @Setter private Double location_y;
 }

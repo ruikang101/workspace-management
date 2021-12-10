@@ -70,7 +70,7 @@ public class UserServices {
   @DeleteMapping(value = "/{userId}")
   public void deleteUser(@PathVariable("userId") long userId) {
     log.info("received delete request on user {}", userId);
-    if (repository.deleteUser(userId)) {
+    if (!repository.deleteUser(userId)) {
       throw new InvalidInputException("Invalid userId.");
     }
   }

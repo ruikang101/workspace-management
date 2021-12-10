@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import tcss556.dao.MeetingRepository;
+import tcss556.dao.RoomRepository;
 import tcss556.dao.UserRepository;
 import tcss556.entities.MeetingEntity;
 import tcss556.services.exceptions.InvalidInputException;
@@ -27,6 +28,7 @@ public class MeetingServices {
 
   @Resource private MeetingRepository repository;
   @Resource private UserRepository userRepository;
+  @Resource private RoomRepository roomRepository;
   @Resource private ResourceConverter<CreateMeetingData, MeetingEntity> createMeetingConverter;
   @Resource private ResourceConverter<MeetingEntity, MeetingData> meetingDataResourceConverter;
   @Resource private ResourceConverter<UpdateMeetingData, MeetingEntity> updateMeetingConverter;
@@ -96,6 +98,9 @@ public class MeetingServices {
   private void validateMeeting(MeetingEntity meetingEntity) {
     if (!userRepository.getUser(meetingEntity.getHostId()).isPresent()) {
       throw new InvalidInputException("host id: " + meetingEntity.getHostId());
+    }
+    if (!roomRepository.getRoom(meetingEntity.getRoomId()).isPresent()) {
+      throw new InvalidInputException("room id" + meetingEntity.getRoomId());
     }
     List<Long> missedGuestIds =
         meetingEntity.getGuests().parallelStream()
