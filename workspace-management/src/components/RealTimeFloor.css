@@ -1,0 +1,30 @@
+.RealTimeFloor .canvas {
+    display: grid;
+    width: 65%;
+    height: 70vh;
+    align-content: stretch;
+    top: 60%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    border: 0.5rem solid;;
+}
+
+.RealTimeFloor .floor{
+    display: grid;
+    /* width: 90%;
+    height: 60vh; */
+    align-content: stretch;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    border: 0.2rem dashed;;
+}
+
+.RealTimeFloor .fileupload{
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+}

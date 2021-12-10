@@ -1,0 +1,49 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.57213146524954,
+                    43.49087076885017
+                ]
+            },
+            "properties": {
+                "id": "5bd9bd9f13b1e7614b000009",
+                "level": "5bd857534bd0ef0e32000002",
+                "destinations": [
+                    "5bd9bd5713b1e7614b000008-5bd9bd4413b1e7614b000007"
+                ],
+                "name": "Stairs 1",
+                "type": "stairs",
+                "weight": 1000,
+                "multiplier": 1,
+                "accessible": false
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.57454278872308,
+                    43.48872692752237
+                ]
+            },
+            "properties": {
+                "id": "5bda2fdb13b1e7614b000198",
+                "level": "5bd857534bd0ef0e32000002",
+                "destinations": [
+                    "5bda2ffe13b1e7614b000199-5bdaea6a4bd0ef7832000004"
+                ],
+                "name": "Stairs 2",
+                "type": "stairs",
+                "weight": 1000,
+                "multiplier": 1,
+                "accessible": false
+            }
+        }
+    ]
+}

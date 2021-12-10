@@ -1,0 +1,22 @@
+{
+	"rooms": [
+		{
+			"id": 1,
+			"status": "empty",
+			"density": 0.1,
+			"capacity": 100,
+			"type": "meetingroom",
+			"coordinates": [100, 100, 100, 100]
+		},
+	],
+	"users": [
+		{
+			"id": 1,
+			"roomId": 1,
+			"username": "test",
+			"department": "IT",
+			"coordinates": [100, 100]
+		}
+	]
+
+}

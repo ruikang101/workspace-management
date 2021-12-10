@@ -1,0 +1,67 @@
+.FloorPlan .radios{
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    margin: 20px;
+}
+
+.FloorPlan .radio{
+    margin: 20px;
+}
+
+.FloorPlan .canvas {
+    display: grid;
+    width: 65%;
+    height: 70vh;
+    align-content: stretch;
+    top: 60%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    border: 0.5rem solid;;
+}
+
+.FloorPlan .floor{
+    display: grid;
+    /* width: 90%;
+    height: 60vh; */
+    align-content: stretch;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    border: 0.2rem dashed;;
+}
+
+
+.meetingroom {
+    fill: #3e7086;
+}
+
+/* .meetingroom {
+    filter: brightness(55%);
+} */
+
+.line {
+    stroke:black;
+    stroke-width:2
+}
+
+.bathroom {
+    fill: rgb(11, 124, 11);
+}
+
+.diningroom {
+    fill: #d4902f;
+}
+
+.cubicle {
+    fill: #c4ac87;
+}
+
+.door {
+    grid-column: 1;
+    grid-row: 2;
+}  
+

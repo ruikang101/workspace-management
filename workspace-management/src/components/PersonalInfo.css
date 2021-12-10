@@ -1,0 +1,51 @@
+.personalinfo {
+    width: 80%;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 10px;
+}
+
+.personalinfo .ant-descriptions-view {
+    font-size: 20px;
+}
+
+.personalinfo .col{
+    float: left;
+    font-size: 18px;
+    margin-bottom: 2px;
+    width: 50%;
+}
+
+.personalinfo .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+.personalinfo .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.personalinfo .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* 定位 */
+    position: absolute;
+    z-index: 1;
+}
+
+.personalinfo .tooltip:hover .tooltiptext {
+    visibility: visible;
+}
