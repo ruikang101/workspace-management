@@ -9,6 +9,7 @@ import Rooms from './components/pages/Rooms';
 import PersonalCenter from './components/pages/PersonalCenter';
 import Demo from './components/pages/Demo';
 import { GlobalProvider } from './components/Context/GlobalState';
+import Meetings from './components/pages/Meetings';
 
 // check login status!!!
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path='/map' exact element={<Map/>} />
             <Route path='/services/findaperson' element={<Users/>} />
             <Route path='/services/findaroom' element={<Rooms/>} />
+            <Route path='/services/meetings' element={<Meetings/>} />
             <Route path='/personalcenter' element={<PersonalCenter/>} />
             <Route path='/demo' element={<Demo/>} />
             {/* <Route path='/products' component={Home} />

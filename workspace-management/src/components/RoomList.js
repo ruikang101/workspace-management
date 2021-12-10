@@ -4,9 +4,10 @@ import './RoomList.css';
 import roomList1 from '../public/Room_data';
 import { GlobalContext } from './Context/GlobalState';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import Button from "@material-ui/core/Button";
+import RoomService from './services/RoomService';
 
 const RoomList = () => {
-    
     const {roomList, updateRoomList} = useContext(GlobalContext);
     console.log(roomList);
     
@@ -20,7 +21,38 @@ const RoomList = () => {
         { field: 'density', headerName: 'Density', width: 200 },
         { field: 'capacity', headerName: 'Capaticy', width: 200 },
         { field: 'type', headerName: 'Type', width: 200 },
+        { 
+          field: '',
+          headerName: 'Action',
+          sortable: false,
+          filterable: false,
+          width: 200,
+          renderCell: (params) => (
+            <Button
+              onClick={async() => {
+                let clonedrooms = JSON.parse(JSON.stringify(roomList));
+                console.log(params.row);
+                const id = params.row.id
+                clonedrooms.splice(id-1, 1);
+                updateRoomList(clonedrooms);
+                
+                // await RoomService.deleteRoom(params.row.id);
+              }}
+            >
+              Delete
+            </Button>
+          ) 
+        }
     ]
+
+    // const rooms = roomList.map(room => ({
+    //     id: room.id,
+    //     status: room.status,
+    //     density: room.density,
+    //     capacity: room.capacity,
+    //     type: room.type,
+    //     action: `<button>delete</button>`
+    // }))
 
     return(
         

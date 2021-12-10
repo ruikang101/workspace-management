@@ -10,7 +10,7 @@ class UserService {
             name: name,
             department: department
         }
-        await axios.post(server.api + "user/", data)
+        await axios.post(server.api + "users/", data)
             .then((res) => {
                 console.log(res);
         });
@@ -18,12 +18,18 @@ class UserService {
 
     // xml
     async login(username, password) {
-        const xml = `<?xml version="1.0" encoding="UTF-8" ?>
-        <root>
-          <username>${username}</username>
-          <password>${password}</password>
-        </root>`;
-        const headers = {'x-authorization-token': 'loggedin', 'Content-Type': 'text/xml'};
+        const xml = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wsdl="http://tcss556/services/models/wsdl">
+            <soapenv:Header/>
+            <soapenv:Body>
+                <wsdl:LoginRequest>
+                    <wsdl:name>${username}</wsdl:name>
+                    <wsdl:password>${password}</wsdl:password>
+                </wsdl:LoginRequest>
+            </soapenv:Body>
+        </soapenv:Envelope>`;
+        const token = username+"_"+username;
+        
+        const headers = {'x-authorization-token': token, 'Content-Type': 'text/xml'};
         await axios.post(server.api + "user/login/", xml, {headers})
             .then(res => {
                 console.log(res);
@@ -35,12 +41,18 @@ class UserService {
         return res.data;
     }
 
-    async updateUser(id, roomId, ) {
+    //!!!
+    async updateUser(id, roomId) {
         const data = {roomId: roomId}
-        await axios.put(server.api + "user/" + id, data)
+        await axios.put(server.api + "users/" + id, data)
             .then(res => {
                 console.log(res);
             })
+    }
+
+    async deleteUser(id) {
+        await axios.delete(server.api + "users/" + id)
+            .then(res => console.log(res));
     }
 }
 

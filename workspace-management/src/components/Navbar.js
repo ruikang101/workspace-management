@@ -45,6 +45,7 @@ function Navbar() {
               <div class="dropdown-content">
                 <Link to="/services/findaperson">Find a person</Link>
                 <Link to="/services/findaroom">Find a room</Link>
+                <Link to="/services/meetings">Meetings</Link>
               </div>
             </li>
             <li className='nav-item'>
