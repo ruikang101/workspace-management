@@ -1,5 +1,9 @@
 package tcss556.dao;
 
+
+public interface UserRepository {
+
+
 import tcss556.entities.UserEntity;
 
 import java.util.List;
@@ -15,4 +19,5 @@ public interface UserRepository {
     boolean deleteUser(long userId);
 
     UserEntity updateUser(UserEntity entity);
+
 }
