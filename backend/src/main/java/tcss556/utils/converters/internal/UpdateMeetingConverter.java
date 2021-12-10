@@ -15,33 +15,29 @@ import java.text.ParseException;
 @Slf4j
 @Component
 public class UpdateMeetingConverter implements ResourceConverter<UpdateMeetingData, MeetingEntity> {
-    @Resource
-    private DateFormat dateFormat;
+  @Resource private DateFormat dateFormat;
 
-    @Override
-    public MeetingEntity convert(UpdateMeetingData resource) {
-        try {
-            MeetingEntity.MeetingEntityBuilder builder = MeetingEntity.builder();
-            if (resource.getHostId() != null) {
-                builder.hostId(resource.getHostId());
-            }
-            if (resource.getGuests() != null && !resource.getGuests().isEmpty()) {
-                builder.guests(resource.getGuests());
-            }
-            if (!StringUtils.isBlank(resource.getStartTime())) {
-                builder.startTime(dateFormat.parse(resource.getStartTime()));
-            }
-            if (!StringUtils.isBlank(resource.getEndTime())) {
-                builder.endTime(dateFormat.parse(resource.getEndTime()));
-            }
-            if (resource.getRoomId() != null) {
-                builder.roomId(resource.getRoomId());
-            }
-            return builder.build();
-        } catch (ParseException e) {
-            log.error("failed to parse date.", e);
-            throw new InvalidInputException("invalid date format");
-        }
-
+  @Override
+  public void convertUpdate(MeetingEntity oldEntity, UpdateMeetingData resource) {
+    try {
+      if (resource.getHostId() != null) {
+        oldEntity.setHostId(resource.getHostId());
+      }
+      if (resource.getGuests() != null && !resource.getGuests().isEmpty()) {
+        oldEntity.setGuests(resource.getGuests());
+      }
+      if (!StringUtils.isBlank(resource.getStartTime())) {
+        oldEntity.setStartTime(dateFormat.parse(resource.getStartTime()));
+      }
+      if (!StringUtils.isBlank(resource.getEndTime())) {
+        oldEntity.setStartTime(dateFormat.parse(resource.getEndTime()));
+      }
+      if (resource.getRoomId() != null) {
+        oldEntity.setId(resource.getRoomId());
+      }
+    } catch (ParseException e) {
+      log.error("failed to parse date.", e);
+      throw new InvalidInputException("invalid date format");
     }
+  }
 }

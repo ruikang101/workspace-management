@@ -10,11 +10,10 @@ import java.util.List;
 @Builder
 public class MeetingEntity {
 
-    private Long id;
-    private Long hostId;
-    private Date startTime;
-    private Date endTime;
-    private Long roomId;
-    private List<Long> guests;
-
+  private Long id;
+  private Long hostId;
+  private Date startTime;
+  private Date endTime;
+  private Long roomId;
+  private List<Long> guests;
 }

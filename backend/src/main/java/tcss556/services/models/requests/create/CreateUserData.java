@@ -9,17 +9,12 @@ import javax.validation.constraints.NotNull;
 @Data
 public class CreateUserData {
 
-    @NotNull
-    private String username;
-    @NotNull
-    @Email
-    private String email;
-    @NotNull
-    private String password;
-    private UserGroup group;
-    private Integer privilege;
-    private Integer floor;
-    private Double location_x;
-    private Double location_y;
-
+  @NotNull private String username;
+  @NotNull @Email private String email;
+  @NotNull private String password;
+  private UserGroup group;
+  private Integer privilege;
+  private Integer floor;
+  private Double location_x;
+  private Double location_y;
 }

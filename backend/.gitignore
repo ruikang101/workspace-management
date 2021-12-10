@@ -3,6 +3,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 .mvn/
+.vscode/
 ### STS ###
 .apt_generated
 .classpath

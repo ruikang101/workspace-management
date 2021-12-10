@@ -27,42 +27,52 @@ import java.io.IOException;
 @RequestMapping("/weathers")
 public class WeatherService {
 
-    @Resource
-    private ObjectMapper mapper;
-    @Resource
-    private InetAddressValidator validator;
+  @Resource private ObjectMapper mapper;
+  @Resource private InetAddressValidator validator;
 
-    @GetMapping(value = "/", produces = "application/json")
-    public String getWeather(HttpServletRequest request){
-        String ipAddr = request.getRemoteAddr();
-        try(CloseableHttpClient client = HttpClients.createDefault()) {
-            log.info("Start looking for geo location of ip {}", ipAddr);
-            if ( !validator.isValidInet4Address(ipAddr) || AppConstants.LOCAL_HOST_IP.equals(ipAddr)) {
-                log.info("server is running locally. Using public ip instead!");
-                HttpGet publicIpLookUpReq = new HttpGet("https://api.ipify.org/?format=json");
-                ipAddr = client.execute(publicIpLookUpReq, httpResponse -> {
-                    JsonNode node = mapper.readTree(EntityUtils.toString(httpResponse.getEntity()));
-                    return node.findValue("ip").asText();
+  @GetMapping(value = "/", produces = "application/json")
+  public String getWeather(HttpServletRequest request) {
+    String ipAddr = request.getRemoteAddr();
+    try (CloseableHttpClient client = HttpClients.createDefault()) {
+      log.info("Start looking for geo location of ip {}", ipAddr);
+      if (!validator.isValidInet4Address(ipAddr) || AppConstants.LOCAL_HOST_IP.equals(ipAddr)) {
+        log.info("server is running locally. Using public ip instead!");
+        HttpGet publicIpLookUpReq = new HttpGet("https://api.ipify.org/?format=json");
+        ipAddr =
+            client.execute(
+                publicIpLookUpReq,
+                httpResponse -> {
+                  JsonNode node = mapper.readTree(EntityUtils.toString(httpResponse.getEntity()));
+                  return node.findValue("ip").asText();
                 });
-                log.info("find public ip {}", ipAddr);
-            }
-            HttpGet ipLookUpReq = new HttpGet(String.format("http://api.ipstack.com/%s?access_key=ba80a32de4d69cc7307296984e7a8c51", ipAddr));
-            String content = client.execute(ipLookUpReq, httpResponse ->
-                EntityUtils.toString(httpResponse.getEntity())
-            );
-            JsonNode node = mapper.readTree(content);
-            Double latitude = node.findValue("latitude").asDouble();
-            Double longitude = node.findValue("longitude").asDouble();
-            log.info("get the latitude:{} and longitude: {} for ip {}", latitude, longitude,ipAddr);
-            String response = Unirest.get("https://weatherapi-com.p.rapidapi.com/current.json?q="+ latitude +"%2C" + longitude)
-                    .header("x-rapidapi-host", "weatherapi-com.p.rapidapi.com")
-                    .header("x-rapidapi-key", "e27c712db8mshf42864079ea19c1p181995jsn5090240ba462")
-                    .asString().getBody();
-            log.info("weather info {}", response);
-            return response;
-        } catch (IOException | UnirestException e) {
-           log.error("failed to load weather info", e);
-           throw new InternalException();
-        }
+        log.info("find public ip {}", ipAddr);
+      }
+      HttpGet ipLookUpReq =
+          new HttpGet(
+              String.format(
+                  "http://api.ipstack.com/%s?access_key=ba80a32de4d69cc7307296984e7a8c51", ipAddr));
+      String content =
+          client.execute(
+              ipLookUpReq, httpResponse -> EntityUtils.toString(httpResponse.getEntity()));
+      JsonNode node = mapper.readTree(content);
+      Double latitude = node.findValue("latitude").asDouble();
+      Double longitude = node.findValue("longitude").asDouble();
+      log.info("get the latitude:{} and longitude: {} for ip {}", latitude, longitude, ipAddr);
+      String response =
+          Unirest.get(
+                  "https://weatherapi-com.p.rapidapi.com/current.json?q="
+                      + latitude
+                      + "%2C"
+                      + longitude)
+              .header("x-rapidapi-host", "weatherapi-com.p.rapidapi.com")
+              .header("x-rapidapi-key", "e27c712db8mshf42864079ea19c1p181995jsn5090240ba462")
+              .asString()
+              .getBody();
+      log.info("weather info {}", response);
+      return response;
+    } catch (IOException | UnirestException e) {
+      log.error("failed to load weather info", e);
+      throw new InternalException();
     }
+  }
 }

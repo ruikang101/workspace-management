@@ -5,7 +5,7 @@ import tcss556.services.models.RoomType;
 
 @Data
 public class UpdateRoomData {
-    private String name;
-    private Integer capacity;
-    private RoomType type;
+  private String name;
+  private Integer capacity;
+  private RoomType type;
 }

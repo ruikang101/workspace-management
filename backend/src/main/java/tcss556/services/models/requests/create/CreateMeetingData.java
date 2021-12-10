@@ -9,13 +9,9 @@ import java.util.List;
 
 @Data
 public class CreateMeetingData {
-    @NotNull
-    private Long host;
-    @NotBlank
-    private String startTime;
-    @NotBlank
-    private String endTime;
-    @Positive
-    private long RoomId;
-    private List<Long> guests;
+  @NotNull private Long host;
+  @NotBlank private String startTime;
+  @NotBlank private String endTime;
+  @Positive private long RoomId;
+  private List<Long> guests;
 }

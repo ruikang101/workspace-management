@@ -11,30 +11,33 @@ import tcss556.filters.JWTFilter;
 import javax.annotation.Resource;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 @Configuration
 public class AppConfig implements WebMvcConfigurer {
 
-    @Resource
-    private JWTFilter filter;
+  @Resource private JWTFilter filter;
 
-    @Bean
-    public ObjectMapper objectMapper(){
-        return new ObjectMapper();
-    }
+  @Bean
+  public ObjectMapper objectMapper() {
+    return new ObjectMapper();
+  }
 
-    @Bean
-    public InetAddressValidator validator(){
-        return InetAddressValidator.getInstance();
-    }
+  @Bean
+  public InetAddressValidator validator() {
+    return InetAddressValidator.getInstance();
+  }
 
-    @Bean
-    public DateFormat getDataFormat(){
-        return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
-    }
+  @Bean
+  public DateFormat getDataFormat() {
+    return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.ENGLISH);
+  }
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(filter).addPathPatterns("/rooms/*", "/users/*", "/meetings/*");
-    }
+  @Override
+  public void addInterceptors(InterceptorRegistry registry) {
+    registry
+        .addInterceptor(filter)
+        .addPathPatterns("/rooms/*", "/users/*", "/meetings/*")
+        .excludePathPatterns();
+  }
 }

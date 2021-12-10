@@ -9,16 +9,13 @@ import javax.validation.constraints.Positive;
 @Data
 @Builder
 public class RoomData {
-    private long id;
-    private String name;
-    @Positive
-    private int capacity;
-    private double b_x_coordinate;
-    private double b_y_coordinate;
-    private double t_x_coordinate;
-    private double t_y_coordinate;
-    @Positive
-    private int floor;
-    private RoomType type;
-
+  private Long id;
+  private String name;
+  @Positive private Integer capacity;
+  private Double b_x_coordinate;
+  private Double b_y_coordinate;
+  private Double t_x_coordinate;
+  private Double t_y_coordinate;
+  @Positive private Integer floor;
+  private RoomType type;
 }

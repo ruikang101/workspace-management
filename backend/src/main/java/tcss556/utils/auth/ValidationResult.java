@@ -7,6 +7,6 @@ import lombok.Data;
 @Data
 @Builder
 public class ValidationResult {
-    private Claims claims;
-    private Throwable error;
+  private Claims claims;
+  private Throwable error;
 }
