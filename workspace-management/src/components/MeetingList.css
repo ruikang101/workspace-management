@@ -1,4 +1,4 @@
-.userlist table {
+/* .userlist table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
@@ -12,9 +12,9 @@
 
 .userlist tr:nth-child(even) {
     background-color: #dddddd; 
-}
+} */
 
-.userlist .createuserform{
+.userlist .createmeetingform{
     width: 280px;
     color: white;
     margin-top: 10px;

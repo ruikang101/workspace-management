@@ -1,4 +1,4 @@
-import React, { Component, useContext } from 'react';
+import React, { Component, useContext, useState } from 'react';
 import UserService from './services/UserService';
 import './UserList.css';
 import userList1 from '../public/User_data';
@@ -6,6 +6,8 @@ import roomList1 from '../public/Room_data';
 import { GlobalContext } from './Context/GlobalState';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import Button from "@material-ui/core/Button";
+import {Button as B} from 'antd';
+import './MeetingList.css'
 
 const meetings = [
     {id: 1, start: "2021-12-10 09:15", end: "2021-12-10 10:15", room: 1},
@@ -19,6 +21,11 @@ const meetings = [
 const MeetingList = () => {
     const {userList, updateUserList} = useContext(GlobalContext);
     const {roomList, updateRoomList} = useContext(GlobalContext);
+    const [isFormVisible, setIsvisible] = useState(false);
+    const [start, setStart] = useState("");
+    const [end, setEnd] = useState("");
+    const [room, setRoom] = useState(0);
+
     if (roomList.length === 0) {
         updateRoomList(roomList1);
     }
@@ -65,10 +72,68 @@ const MeetingList = () => {
         }
     ]
 
+    const changeStart = (e) => {
+        setStart(e.target.value)
+    }
+
+    const changeEnd = (e) => {
+        setEnd(e.target.value)
+    }
+
+    const changeRoom = (e) => {
+        setRoom(e.target.value)
+    }
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+        // let clonedMeetings = JSON.parse(JSON.stringify(meetings));
+        // console.log(clonedMeetings);
+        // clonedMeetings.push(
+        //     {
+        //         id: clonedMeetings[clonedMeetings.length-1].id + 1,
+        //         username: username,
+        //         password: password,
+        //         name: name,
+        //         department: department,
+        //         roomId: 0
+        //     }
+        // )
+        // setU(clonedMeetings);
+        setIsvisible(false);
+        meetingList.push({
+            id: meetingList[meetingList.length-1].id+1,
+            start: start,
+            end: end,
+            room: room
+        })
+
+
+        // waiting to be tested
+        // await UserService.login(username, password);
+        
+        // navigate('/personalcenter');
+    }
         
     return(
         
-        <div style={{ height: 630, width: '100%' }}>
+        <div className="userlist" style={{ height: 630, width: '100%' }}>
+            <B style={{marginLeft: "10px"}} type="primary" size="large" onClick={()=>setIsvisible(!isFormVisible)}>Create a meeting</B>
+            {isFormVisible 
+            ? 
+            <form className="createmeetingform" onSubmit={handleSubmit}>
+                <div className="textbox">
+                    <input type="text" placeholder="Start" name="start" onChange={changeStart} />
+                </div>
+                <div className="textbox">
+                    <input type="text" placeholder="End" name="end" onChange={changeEnd} />
+                </div>
+                <div className="textbox">
+                    <input type="text" placeholder="Room" name="room" onChange={changeRoom} />
+                </div>
+                <br/>
+                <button className="btn" type="submit">Submit</button>
+            </form>
+            : 
+            <div></div>}
             <DataGrid
                 rows={meetingList}
                 columns={columns}

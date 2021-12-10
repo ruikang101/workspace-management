@@ -45,15 +45,6 @@ const RoomList = () => {
         }
     ]
 
-    // const rooms = roomList.map(room => ({
-    //     id: room.id,
-    //     status: room.status,
-    //     density: room.density,
-    //     capacity: room.capacity,
-    //     type: room.type,
-    //     action: `<button>delete</button>`
-    // }))
-
     return(
         
         <div style={{ height: 630, width: '100%' }}>

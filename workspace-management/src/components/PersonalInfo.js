@@ -6,6 +6,15 @@ import axios from 'axios';
 
 const server = require("../config/server");
 
+const wea = {
+    region: "Washington",
+    country: "United States",
+    last_updated: "2021-12-09 00:15",
+    temp_c: 4.4,
+    temp_f: 39.9,
+    humidity: 76
+};
+
 const test01 = {
     username: "test01",
     name: "ruikang",
@@ -15,28 +24,28 @@ const test01 = {
 
 const PersonalInfo = () => {
 
-    const [wea, setWea] = useState({});
-    useEffect(() => {
-        async function update() {
-            let weather = await axios.get(server.api + "weathers/").then(res => res.data);
-            console.log(weather);
-            let current = {
-                last_updated: "2021-12-09 00:15",
-                temp_c: 4.4,
-                temp_f: 39.9,
-                humidity: 76
-            };
-            current.last_updated = weather.current.last_updated;
-            current.temp_c = weather.current.temp_c;
-            current.temp_f = weather.current.temp_f;
-            current.humidity = weather.current.humidity;
-            setWea(current);
-        }
-        update();
+    // const [wea, setWea] = useState({});
+    // useEffect(() => {
+    //     async function update() {
+    //         let weather = await axios.get(server.api + "weathers/").then(res => res.data);
+    //         console.log(weather);
+    //         let current = {
+    //             last_updated: "2021-12-09 00:15",
+    //             temp_c: 4.4,
+    //             temp_f: 39.9,
+    //             humidity: 76
+    //         };
+    //         current.last_updated = weather.current.last_updated;
+    //         current.temp_c = weather.current.temp_c;
+    //         current.temp_f = weather.current.temp_f;
+    //         current.humidity = weather.current.humidity;
+    //         setWea(current);
+    //     }
+    //     update();
         
-        // get user and weather data
-        // , {headers: {'x-authorization-token': 'loggedin'}}
-    })
+    //     // get user and weather data
+    //     // , {headers: {'x-authorization-token': 'loggedin'}}
+    // })
 
     function onChange(checked) {
         console.log(`switch to ${checked}`);
@@ -77,6 +86,14 @@ const PersonalInfo = () => {
             <br/>
             <div>
                 <span style={{fontSize: "20px"}}>Local Weather</span>
+                <div className="row">
+                    <div className="col">
+                        <div className="info">region: {wea.region}</div>
+                    </div>
+                    <div className="col">
+                        <div className="info">country: {wea.country}</div>
+                    </div>
+                </div>
                 <div className="row">
                     <div className="col">
                         <div className="info">last update: {wea.last_updated}</div>

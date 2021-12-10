@@ -7,6 +7,7 @@ import RoomService from './services/RoomService';
 import UserService from './services/UserService';
 import { GlobalContext } from './Context/GlobalState';
 import myData from '../public/RFID_data.json';
+import Button from "@material-ui/core/Button";
 
 // test data
 
@@ -210,7 +211,7 @@ const RealTimeFloor = () => {
                         <br/>
                         <input type="file" onChange={uploadFile} />
                         <br/> */}
-                        <button onClick={startAnimation}>start</button>
+                        <Button onClick={startAnimation}>Start (receiving data from RFID)</Button>
                     </div>
                     <div className="canvas">
                         <svg className="floor" width="800" height="450">
