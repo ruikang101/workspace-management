@@ -2,6 +2,7 @@ import React, { Component, useState, useContext, useEffect } from 'react';
 import './RealTimeFloor.css';
 import pointInSvgPolygon from 'point-in-svg-polygon';
 import roomList1 from '../public/Room_data';
+import userList1 from '../public/User_data';
 import RoomService from './services/RoomService';
 import UserService from './services/UserService';
 import { GlobalContext } from './Context/GlobalState';
@@ -36,6 +37,7 @@ const RealTimeFloor = () => {
     // }
 
     const {roomList, updateRoomList} = useContext(GlobalContext);
+    const {userList, updateUserList} = useContext(GlobalContext);
     const [movements, updateMovements] = useState([]);
     const [initialCoordinates, updateInitialCoordinates] = useState([]);
     
@@ -45,6 +47,7 @@ const RealTimeFloor = () => {
         updateInitialCoordinates(myData.initialCoordinates);
         console.log(roomList);
         updateRoomList(roomList1);
+        updateUserList(userList1);
         console.log(roomList);
     }, [])
 
@@ -92,6 +95,7 @@ const RealTimeFloor = () => {
 
     const updateDensity = async() => {
         let clonedrooms = JSON.parse(JSON.stringify(roomList));
+        let clonedusers = JSON.parse(JSON.stringify(userList));
         console.log(clonedrooms);
         const room = clonedrooms[2];
         let count = room.capacity * room.density;
@@ -104,9 +108,15 @@ const RealTimeFloor = () => {
         clonedrooms[2].status = room.status;
         clonedrooms[5].status = "crowded";
         clonedrooms[5].density = 0.6;
-        console.log(roomList);
+        for (let i=0; i<5; i++) {
+            clonedusers[i].roomId = 3;
+        }
         updateRoomList(clonedrooms);
-        console.log(roomList);
+        console.log(userList)
+        updateUserList(clonedusers);
+        console.log(userList)
+
+
 
         // let temp = [
         //     {id: 3, status: "moderate", density: 0.5},

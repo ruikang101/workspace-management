@@ -3,7 +3,8 @@ import AppReducer from './AppReducer';
 import roomList1 from '../../public/Room_data';
 
 const initialState = {
-   roomList : [],
+   roomList: [],
+   userList: []
 }
 
 export const GlobalContext = createContext(initialState);
@@ -19,15 +20,15 @@ export const GlobalProvider = ({ children }) => {
            payload: item
        });
    }
-//    function updateUserList(item) {
-//        dispatch({
-//            type: 'UPDATE_USER',
-//            payload: item
-//        });
-//    }
+   function updateUserList(item) {
+       dispatch({
+           type: 'UPDATE_USER',
+           payload: item
+       });
+   }
 
    return(
-    <GlobalContext.Provider value = {{roomList : state.roomList, updateRoomList}}> 
+    <GlobalContext.Provider value = {{roomList: state.roomList, userList: state.userList, updateRoomList, updateUserList}}> 
         {children} 
    </GlobalContext.Provider>
    )

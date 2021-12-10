@@ -19,6 +19,9 @@ const current = {
 
 const PersonalInfo = () => {
 
+    // useEffect(() => {
+    //     // get user and weather data
+    // }, [input])
 
     function onChange(checked) {
         console.log(`switch to ${checked}`);
