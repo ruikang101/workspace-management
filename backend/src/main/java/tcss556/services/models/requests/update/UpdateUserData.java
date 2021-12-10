@@ -7,8 +7,6 @@ import javax.validation.constraints.NotBlank;
 
 @Data
 public class UpdateUserData {
-
-    @NotBlank
     private String password;
     private UserGroup group;
     private Integer privilege;

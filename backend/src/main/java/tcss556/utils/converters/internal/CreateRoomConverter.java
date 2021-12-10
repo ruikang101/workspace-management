@@ -10,6 +10,17 @@ import tcss556.utils.converters.ResourceConverter;
 public class CreateRoomConverter implements ResourceConverter<CreateRoomData, RoomEntity> {
     @Override
     public RoomEntity convert(CreateRoomData resource) {
-        throw new NotImplementedException("Not implemented yet! Waiting for the entity to settle!");
+        RoomEntity.RoomEntityBuilder builder = RoomEntity.builder();
+        builder.name(resource.getName());
+        builder.capacity(resource.getCapacity());
+        builder.b_x_coordinate(resource.getB_x_coordinate());
+        builder.b_y_coordinate(resource.getB_y_coordinate());
+        builder.t_x_coordinate(resource.getT_x_coordinate());
+        builder.t_y_coordinate(resource.getT_y_coordinate());
+        builder.floor(resource.getFloor());
+        if (resource.getType() != null) {
+            builder.type(resource.getType());
+        }
+        return builder.build();
     }
 }

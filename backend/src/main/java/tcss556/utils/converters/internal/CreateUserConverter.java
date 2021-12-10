@@ -10,7 +10,14 @@ import tcss556.utils.converters.ResourceConverter;
 public class CreateUserConverter implements ResourceConverter<CreateUserData, UserEntity> {
     @Override
     public UserEntity convert(CreateUserData resource) {
-        throw new NotImplementedException("Not implemented yet! Waiting for the entity to settle!");
-
+        UserEntity.UserEntityBuilder entityBuilder = UserEntity.builder();
+        entityBuilder.username(resource.getUsername());
+        entityBuilder.email(resource.getEmail());
+        entityBuilder.password(resource.getPassword());
+        UpdateUserConverter.setOptionalFields(entityBuilder, resource.getGroup(), resource.getPrivilege(), resource.getFloor(), resource.getLocation_x());
+        if (resource.getLocation_y() != null) {
+            entityBuilder.location_y(resource.getLocation_y());
+        }
+        return entityBuilder.build();
     }
 }

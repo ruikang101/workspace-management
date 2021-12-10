@@ -1,0 +1,9 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wsdl="http://tcss556/services/models/wsdl">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <wsdl:LoginRequest>
+            <wsdl:name>root</wsdl:name>
+            <wsdl:password>123456</wsdl:password>
+        </wsdl:LoginRequest>
+    </soapenv:Body>
+</soapenv:Envelope>

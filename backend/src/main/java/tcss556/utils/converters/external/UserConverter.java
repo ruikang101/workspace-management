@@ -11,6 +11,14 @@ public class UserConverter implements ResourceConverter<UserEntity, UserData> {
 
     @Override
     public UserData convert(UserEntity resource) {
-        throw new NotImplementedException("Not implemented yet! Waiting for the entity to settle!");
+        UserData.UserDataBuilder builder = UserData.builder();
+        builder.username(resource.getUsername());
+        builder.email(resource.getEmail());
+        builder.group(resource.getUserGroup());
+        builder.privilege(resource.getPrivilege());
+        builder.floor(resource.getFloor());
+        builder.location_x(resource.getLocation_x());
+        builder.location_y(resource.getLocation_y());
+        return builder.build();
     }
 }

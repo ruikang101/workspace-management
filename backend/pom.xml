@@ -19,10 +19,10 @@
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
     <dependencies>
-        <!--		<dependency>-->
-        <!--			<groupId>org.springframework.boot</groupId>-->
-        <!--			<artifactId>spring-boot-starter-data-jpa</artifactId>-->
-        <!--		</dependency>-->
+        		<dependency>
+        			<groupId>org.springframework.boot</groupId>
+        			<artifactId>spring-boot-starter-data-jpa</artifactId>
+        		</dependency>
         <!--		<dependency>-->
         <!--			<groupId>org.springframework.boot</groupId>-->
         <!--			<artifactId>spring-boot-starter-jdbc</artifactId>-->
@@ -123,6 +123,19 @@
             <artifactId>jjwt</artifactId>
             <version>0.7.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.9</version>
+        </dependency>
+
 
         <!--		<dependency>-->
         <!--			<groupId>org.springframework.boot</groupId>-->
@@ -147,28 +160,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.codehaus.mojo</groupId>-->
-<!--                <artifactId>jaxb2-maven-plugin</artifactId>-->
-<!--                <version>2.5.0</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>xjc</id>-->
-<!--                        <goals>-->
-<!--                            <goal>xjc</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                <configuration>-->
-<!--                    <sources>-->
-<!--                        <source>-->
-<!--                            ${project.basedir}/src/main/resources/UserLogin.xsd-->
-<!--                        </source>-->
-<!--                    </sources>-->
-<!--                    <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>-->
-<!--                    <clearOutputDir>false</clearOutputDir>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
         </plugins>
     </build>
 
