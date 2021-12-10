@@ -20,7 +20,7 @@ public class UserEntity implements Serializable {
   @Getter @Setter private String email;
   @Getter @Setter private Integer privilege;
   @Enumerated(EnumType.STRING)
-  @Builder.Default private UserGroup userGroup = UserGroup.USER;
+  @Getter @Setter @Builder.Default private UserGroup userGroup = UserGroup.USER;
   @Getter @Setter private Integer floor;
   @Getter @Setter private Double location_x;
   @Getter @Setter private Double location_y;
