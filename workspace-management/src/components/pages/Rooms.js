@@ -5,7 +5,6 @@ class Rooms extends Component {
     render() {
         return (
             <div>
-                <h1>RoomList</h1>
                 <RoomList />
             </div>
         )

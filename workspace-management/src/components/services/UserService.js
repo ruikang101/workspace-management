@@ -3,13 +3,8 @@ import axios from 'axios';
 const server = require("../../config/server");
 
 class UserService {
-    async signUp(username, password, name, department) {
-        const data = {
-            username: username,
-            password: password,
-            name: name,
-            department: department
-        }
+
+    async signUp(data) {
         await axios.post(server.api + "users/", data)
             .then((res) => {
                 console.log(res);
@@ -17,17 +12,17 @@ class UserService {
     }
 
     // xml
-    async login(username, password) {
+    async login(data) {
         const xml = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wsdl="http://tcss556/services/models/wsdl">
             <soapenv:Header/>
             <soapenv:Body>
                 <wsdl:LoginRequest>
-                    <wsdl:name>${username}</wsdl:name>
-                    <wsdl:password>${password}</wsdl:password>
+                    <wsdl:name>${data.username}</wsdl:name>
+                    <wsdl:password>${data.password}</wsdl:password>
                 </wsdl:LoginRequest>
             </soapenv:Body>
         </soapenv:Envelope>`;
-        const token = username+"_"+username;
+        const token = data.username+"_"+data.username;
         
         const headers = {'x-authorization-token': token, 'Content-Type': 'text/xml'};
         await axios.post(server.api + "user/login/", xml, {headers})
@@ -37,13 +32,17 @@ class UserService {
     }
 
     async fetchUserList() {
-        const res = await axios.get(server.api + "users/");
-        return res.data;
+        return await axios.get(server.api + "users/")
+            .then(res => res.data);
+    }
+
+    async getUser(id) {
+        return await axios.get(server.api + "users/" + id)
+            .then(res => res.data);
     }
 
     //!!!
-    async updateUser(id, roomId) {
-        const data = {roomId: roomId}
+    async updateUser(id, data) {
         await axios.put(server.api + "users/" + id, data)
             .then(res => {
                 console.log(res);

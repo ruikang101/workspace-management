@@ -18,10 +18,10 @@ class LoginForm extends Component {
         e.preventDefault();
         const { username, password } = this.state;
         console.log(this.state);
-        // waiting to be tested
-        // await UserService.login(username, password);
         const navigate = this.props.navigate;
-        navigate('/personalcenter');
+        // waiting to be tested
+        await UserService.login({username: username, password: password})
+            .then(()=>{navigate('/personalcenter');});
         // navigate('/personalcenter');
     }
 

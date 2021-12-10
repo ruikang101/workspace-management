@@ -39,17 +39,27 @@ const RealTimeFloor = () => {
 
     const {roomList, updateRoomList} = useContext(GlobalContext);
     const {userList, updateUserList} = useContext(GlobalContext);
+
+    // const [userList, setUserList] = useState([]);
+    // const [roomList, setRoomList] = useState([]);
+
     const [movements, updateMovements] = useState([]);
     const [initialCoordinates, updateInitialCoordinates] = useState([]);
     
 
-    useEffect(() => {
+    useEffect(async() => {
         updateMovements(myData.movements);
         updateInitialCoordinates(myData.initialCoordinates);
         console.log(roomList);
         updateRoomList(roomList1);
         updateUserList(userList1);
         console.log(roomList);
+        // let users = await axios.get(server.api + "users/")
+        //     .then(res => res.data);
+        // let rooms = await axios.get(server.api + "rooms/")
+        //     .then(res => res.data);
+        // setUserList(users);
+        // setRoomList(rooms);
     }, [])
 
     const startAnimation = async() => {
@@ -61,7 +71,7 @@ const RealTimeFloor = () => {
             return new Promise(resolve => setTimeout(resolve, milliseconds))
         }
         await sleep(5000);
-        updateDensity();
+        updateState();
     }
 
     // const uploadFile = e => {
@@ -94,7 +104,7 @@ const RealTimeFloor = () => {
         return 'M' + x + ',' + y + 'L' + (x + width) + ',' + y + ' ' + (x + width) + ',' + (y + height) + ' ' + x + ',' + (y + height) + 'z';
     }
 
-    const updateDensity = async() => {
+    const updateState = async() => {
         let clonedrooms = JSON.parse(JSON.stringify(roomList));
         let clonedusers = JSON.parse(JSON.stringify(userList));
         console.log(clonedrooms);
@@ -116,6 +126,31 @@ const RealTimeFloor = () => {
         console.log(userList)
         updateUserList(clonedusers);
         console.log(userList)
+
+        // const room1 = {
+        //     id: roomList[2].id,
+        //     name: roomList[2].name,
+        //     status: "moderate",
+        //     density: 0.5,
+        //     capacity: roomList[2].capacity,
+        //     b_x_coordinate: roomList[2].b_x_coordinate,
+        //     b_y_coordinate: roomList[2].b_y_coordinate,
+        //     t_x_coordinate: roomList[2].t_x_coordinate,
+        //     t_y_coordinate: roomList[2].t_y_coordinate,
+        //     floor: roomList[2].floor
+        // };
+        // const room2 = {
+        //     id: roomList[5].id,
+        //     name: roomList[5].name,
+        //     status: "crowded",
+        //     density: 0.6,
+        //     capacity: roomList[5].capacity,
+        //     b_x_coordinate: roomList[5].b_x_coordinate,
+        //     b_y_coordinate: roomList[5].b_y_coordinate,
+        //     t_x_coordinate: roomList[5].t_x_coordinate,
+        //     t_y_coordinate: roomList[5].t_y_coordinate,
+        //     floor: roomList[5].floor
+        // };
 
 
 

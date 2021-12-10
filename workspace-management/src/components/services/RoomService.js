@@ -4,11 +4,7 @@ const server = require("../../config/server");
 
 class RoomService {
     //!!!
-    async updateRoom(id, status, density) {
-        const data = {
-            status: status,
-            density: density
-        }
+    async updateRoom(id, data) {
         await axios.put(server.api + "rooms/" + id, data)
             .then((res) => {
                 console.log(res);
@@ -16,8 +12,13 @@ class RoomService {
     }
 
     async fetchRoomList() {
-        const res = await axios.get(server.api + "rooms/");
-        return res.data;
+        return await axios.get(server.api + "rooms/")
+            .then(res => res.data);
+    }
+
+    async getRoom(id) {
+        return await axios.get(server.api + "rooms/" + id)
+            .then(res => res.data);
     }
 
     async deleteRoom(id) {

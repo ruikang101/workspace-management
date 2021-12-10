@@ -1,5 +1,7 @@
-import React, { Component, useContext, useState } from 'react';
+import React, { Component, useContext, useState, useEffect } from 'react';
 import UserService from './services/UserService';
+import RoomService from './services/RoomService';
+import MeetingService from './services/MeetingService';
 import './UserList.css';
 import userList1 from '../public/User_data';
 import roomList1 from '../public/Room_data';
@@ -7,47 +9,71 @@ import { GlobalContext } from './Context/GlobalState';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import Button from "@material-ui/core/Button";
 import {Button as B} from 'antd';
-import './MeetingList.css'
+import './MeetingList.css';
 
-const meetings = [
-    {id: 1, start: "2021-12-10 09:15", end: "2021-12-10 10:15", room: 1},
-    {id: 2, start: "2021-12-10 11:15", end: "2021-12-10 11:45", room: 1},
-    {id: 3, start: "2021-12-10 10:00", end: "2021-12-10 10:30", room: 3},
-    {id: 4, start: "2021-12-10 14:00", end: "2021-12-10 17:15", room: 4},
-    {id: 5, start: "2021-12-10 13:30", end: "2021-12-10 14:30", room: 6},
-    {id: 6, start: "2021-12-10 16:15", end: "2021-12-10 16:50", room: 3},
-]
+import axios from 'axios';
+const server = require("../config/server");
+
+
+// !!!data sample
+// const meetings = [
+//     {id: 1, startTime: "2021-12-10 09:15", endTime: "2021-12-10 10:15", roomId: 1, hostId:1, guests: [2,3,4,5]},
+//     {id: 2, startTime: "2021-12-10 11:15", endTime: "2021-12-10 11:45", roomId: 1, hostId:12, guests: [2,3,4,5]},
+//     {id: 3, startTime: "2021-12-10 10:00", endTime: "2021-12-10 10:30", roomId: 3, hostId:13, guests: [2,3,4,5]},
+//     {id: 4, startTime: "2021-12-10 14:00", endTime: "2021-12-10 17:15", roomId: 4, hostId:15, guests: [2,3,4,5]},
+//     {id: 5, startTime: "2021-12-10 13:30", endTime: "2021-12-10 14:30", roomId: 6, hostId:1, guests: [2,3,4,5]},
+//     {id: 6, startTime: "2021-12-10 16:15", endTime: "2021-12-10 16:50", roomId: 3, hostId:14, guests: [2,3,4,5]},
+// ]
 
 const MeetingList = () => {
-    const {userList, updateUserList} = useContext(GlobalContext);
-    const {roomList, updateRoomList} = useContext(GlobalContext);
+
+    // uncomment to test frontend only
+    // const {userList, updateUserList} = useContext(GlobalContext);
+    // const {roomList, updateRoomList} = useContext(GlobalContext);
+    // if (roomList.length === 0) {
+    //     updateRoomList(roomList1);
+    // }
+
+    // if (userList.length === 0) {
+    //     updateUserList(userList1);
+    // }
+
+    // const meetingList = meetings.map(meeting => ({
+        // id: meeting.id,
+        // startTime: meeting.startTime,
+        // endTime: meeting.endTime,
+        // roomId: "Meetingroom " + meeting.roomId
+    // }))
+
+    const [meetingList, setMeetingList] = useState([]);
+
     const [isFormVisible, setIsvisible] = useState(false);
-    const [start, setStart] = useState("");
-    const [end, setEnd] = useState("");
-    const [room, setRoom] = useState(0);
+    const [startTime, setStart] = useState("");
+    const [endTime, setEnd] = useState("");
+    const [roomId, setRoom] = useState(0);
+    const [hostId, setHost] = useState(0);
 
-    if (roomList.length === 0) {
-        updateRoomList(roomList1);
-    }
-    console.log(userList)
-
-    if (userList.length === 0) {
-        updateUserList(userList1);
-    }
-    console.log(userList)
-
-    const meetingList = meetings.map(meeting => ({
-        id: meeting.id,
-        start: meeting.start,
-        end: meeting.end,
-        room: "Meetingroom " + meeting.room
-    }))
+    useEffect(async() => {
+        let users = await axios.get(server.api + "users/")
+            .then(res => res.data);
+        let meetings = await axios.get(server.api + "meetings/")
+            .then(res => res.data);
+        let meetingList = meetings.map(meeting => ({
+            id: meeting.id,
+            startTime: meeting.startTime,
+            endTime: meeting.endTime,
+            room: "Meetingroom " + meeting.roomId,
+            host: users.filter(user => user.id == meeting.hostId)[0].username
+        }))
+        setMeetingList(meetingList);
+    })
 
     const columns = [
-        { field: 'id', headerName: 'ID', width: 200 },
-        { field: 'start', headerName: 'Start', width: 300 },
-        { field: 'end', headerName: 'End', width: 300 },
+        { field: 'id', headerName: 'ID', width: 180 },
+        { field: 'startTime', headerName: 'Start Time', width: 280 },
+        { field: 'endTime', headerName: 'End Time', width: 280 },
         { field: 'room', headerName: 'Room', width: 250 },
+        { field: 'host', headerName: 'Host', width: 200 },
         { 
             field: '',
             headerName: 'Action',
@@ -63,7 +89,7 @@ const MeetingList = () => {
                 //   clonedMeetingList.splice(id-1, 1);
                 //   updateMeetingList(clonedMeetingList);
                   
-                  // await MeetingService.deleteMeeting(params.row.id);
+                  await MeetingService.deleteMeeting(params.row.id);
                 }}
               >
                 Delete
@@ -72,17 +98,6 @@ const MeetingList = () => {
         }
     ]
 
-    const changeStart = (e) => {
-        setStart(e.target.value)
-    }
-
-    const changeEnd = (e) => {
-        setEnd(e.target.value)
-    }
-
-    const changeRoom = (e) => {
-        setRoom(e.target.value)
-    }
     const handleSubmit = async(e) => {
         e.preventDefault();
         // let clonedMeetings = JSON.parse(JSON.stringify(meetings));
@@ -98,36 +113,44 @@ const MeetingList = () => {
         //     }
         // )
         // setU(clonedMeetings);
+        // meetingList.push({
+            // id: meetingList[meetingList.length-1].id+1,
+            // start: start,
+            // end: end,
+            // room: room
+        // })
         setIsvisible(false);
-        meetingList.push({
+        const newMeeting = {
             id: meetingList[meetingList.length-1].id+1,
-            start: start,
-            end: end,
-            room: room
-        })
-
-
-        // waiting to be tested
-        // await UserService.login(username, password);
-        
-        // navigate('/personalcenter');
+            startTime: startTime,
+            endTime: endTime,
+            roomId: roomId,
+            hostId: hostId,
+            guests: [2,3,4,6]
+        };
+        MeetingService.createMeeting(newMeeting);
     }
         
     return(
-        
         <div className="userlist" style={{ height: 630, width: '100%' }}>
+            <h1 style={{marginLeft: "10px"}}>MeetingList</h1>
             <B style={{marginLeft: "10px"}} type="primary" size="large" onClick={()=>setIsvisible(!isFormVisible)}>Create a meeting</B>
+            <br/>
+            <br/>
             {isFormVisible 
             ? 
             <form className="createmeetingform" onSubmit={handleSubmit}>
                 <div className="textbox">
-                    <input type="text" placeholder="Start" name="start" onChange={changeStart} />
+                    <input type="text" placeholder="Start Time" name="startTime" onChange={(e) => {setStart(e.target.value)}} />
                 </div>
                 <div className="textbox">
-                    <input type="text" placeholder="End" name="end" onChange={changeEnd} />
+                    <input type="text" placeholder="End Time" name="endTime" onChange={(e) => {setEnd(e.target.value)}} />
                 </div>
                 <div className="textbox">
-                    <input type="text" placeholder="Room" name="room" onChange={changeRoom} />
+                    <input type="text" placeholder="Room Id" name="roomId" onChange={(e) => {setRoom(e.target.value)}} />
+                </div>
+                <div className="textbox">
+                    <input type="text" placeholder="Host Id" name="hostId" onChange={(e) => {setHost(e.target.value)}} />
                 </div>
                 <br/>
                 <button className="btn" type="submit">Submit</button>
