@@ -30,7 +30,7 @@ public class WSConfig extends WsConfigurerAdapter{
         DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
         definition.setPortTypeName("UserLoginPort");
         definition.setTargetNamespace("http://tcss556/services/models/wsdl");
-        definition.setLocationUri("/user/userLogin");
+        definition.setLocationUri("/user/login");
         definition.setSchema(userLoginSchema);
         return definition;
     }
