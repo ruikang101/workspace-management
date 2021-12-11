@@ -12,6 +12,7 @@ public class CreateUserData {
   @NotNull private String username;
   @NotNull @Email private String email;
   @NotNull private String password;
+  private String department;
   private UserGroup group;
   private Integer privilege;
   private Integer floor;

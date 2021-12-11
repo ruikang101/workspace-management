@@ -19,6 +19,7 @@ public class UserConverter implements ResourceConverter<UserEntity, UserData> {
     builder.floor(resource.getFloor());
     builder.location_x(resource.getLocation_x());
     builder.location_y(resource.getLocation_y());
+    builder.department(resource.getDepartment());
     return builder.build();
   }
 }

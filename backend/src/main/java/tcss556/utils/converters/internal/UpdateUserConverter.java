@@ -11,11 +11,15 @@ import tcss556.utils.converters.ResourceConverter;
 public class UpdateUserConverter implements ResourceConverter<UpdateUserData, UserEntity> {
   static void setOptionalFields(
       UserEntity entity,
+      String department,
       UserGroup group,
       Integer privilege,
       Integer floor,
       Double location_x,
       Double location_y) {
+    if (!StringUtils.isNotEmpty(department)) {
+      entity.setDepartment(department);
+    }
     if (group != null) {
       entity.setUserGroup(group);
     }
@@ -40,6 +44,7 @@ public class UpdateUserConverter implements ResourceConverter<UpdateUserData, Us
     }
     setOptionalFields(
         entity,
+        resource.getDepartment(),
         resource.getGroup(),
         resource.getPrivilege(),
         resource.getFloor(),

@@ -14,11 +14,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import tcss556.constants.AppConstants;
 import tcss556.services.exceptions.InternalException;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @Slf4j
@@ -31,22 +29,18 @@ public class WeatherService {
   @Resource private InetAddressValidator validator;
 
   @GetMapping(value = "/", produces = "application/json")
-  public String getWeather(HttpServletRequest request) {
-    String ipAddr = request.getRemoteAddr();
+  public String getWeather() {
     try (CloseableHttpClient client = HttpClients.createDefault()) {
-      log.info("Start looking for geo location of ip {}", ipAddr);
-      if (!validator.isValidInet4Address(ipAddr) || AppConstants.LOCAL_HOST_IP.equals(ipAddr)) {
-        log.info("server is running locally. Using public ip instead!");
-        HttpGet publicIpLookUpReq = new HttpGet("https://api.ipify.org/?format=json");
-        ipAddr =
-            client.execute(
-                publicIpLookUpReq,
-                httpResponse -> {
-                  JsonNode node = mapper.readTree(EntityUtils.toString(httpResponse.getEntity()));
-                  return node.findValue("ip").asText();
-                });
-        log.info("find public ip {}", ipAddr);
-      }
+      HttpGet publicIpLookUpReq = new HttpGet("https://api.ipify.org/?format=json");
+      String ipAddr =
+          client.execute(
+              publicIpLookUpReq,
+              httpResponse -> {
+                JsonNode node = mapper.readTree(EntityUtils.toString(httpResponse.getEntity()));
+                return node.findValue("ip").asText();
+              });
+      log.info("find public ip {}", ipAddr);
+
       HttpGet ipLookUpReq =
           new HttpGet(
               String.format(

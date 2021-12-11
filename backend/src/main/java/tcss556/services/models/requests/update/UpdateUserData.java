@@ -6,6 +6,7 @@ import tcss556.services.models.UserGroup;
 @Data
 public class UpdateUserData {
   private String password;
+  private String department;
   private UserGroup group;
   private Integer privilege;
   private Integer floor;

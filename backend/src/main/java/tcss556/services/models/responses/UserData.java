@@ -13,6 +13,7 @@ public class UserData {
   private Long id;
   @NotNull private String username;
   @NotNull @Email private String email;
+  private String department;
   private UserGroup group;
   private Integer privilege;
   private Integer floor;

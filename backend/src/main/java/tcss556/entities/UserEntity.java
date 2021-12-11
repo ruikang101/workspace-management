@@ -24,4 +24,5 @@ public class UserEntity implements Serializable {
   @Getter @Setter private Integer floor;
   @Getter @Setter private Double location_x;
   @Getter @Setter private Double location_y;
+  @Getter @Setter private String department;
 }

@@ -16,6 +16,7 @@ public class CreateUserConverter implements ResourceConverter<CreateUserData, Us
     UserEntity entity = entityBuilder.build();
     UpdateUserConverter.setOptionalFields(
         entity,
+        resource.getDepartment(),
         resource.getGroup(),
         resource.getPrivilege(),
         resource.getFloor(),
