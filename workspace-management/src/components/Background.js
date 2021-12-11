@@ -4,10 +4,7 @@ import { Button } from './Button';
 import './Background.css';
 import video from '../public/videos/video-3.mp4';
 
-const style = {
-  
-}
-
+// Background for the home page
 function Background() {
   return (
     <div className='background'>

@@ -22,6 +22,8 @@ const test01 = {
     department: "IT"
 }
 
+// This component contains test data with Context.
+// Personal info and weather data for personal center
 const PersonalInfo = () => {
 
     // const [wea, setWea] = useState({});

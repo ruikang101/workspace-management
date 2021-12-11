@@ -9,8 +9,9 @@ import { GlobalContext } from './Context/GlobalState';
 import myData from '../public/RFID_data.json';
 import Button from "@material-ui/core/Button";
 
-// test data
 
+// This component contains test data with Context.
+// Main component for the demo page. Simulating RFID data transmission. Updating every 5 seconds.
 const RealTimeFloor = () => {
     // constructor() {
     //     super();

@@ -11,6 +11,8 @@ import {Button as B} from 'antd';
 import axios from 'axios';
 const server = require("../config/server");
 
+// This component contains test data with Context.
+// User list under the service tab
 const UserList = () => {
     // const {userList, updateUserList} = useContext(GlobalContext);
     // const {roomList, updateRoomList} = useContext(GlobalContext);

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import UserService from './services/UserService';
 import { Link } from 'react-router-dom';
 
+// Login form in the home page
 class LoginForm extends Component {
     constructor() {
         super();

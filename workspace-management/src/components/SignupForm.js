@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import UserService from './services/UserService';
 
+// Signup form in the home page
 class SignupForm extends Component {
     constructor() {
         super();

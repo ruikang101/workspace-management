@@ -25,6 +25,8 @@ const server = require("../config/server");
 //     {id: 6, startTime: "2021-12-10 16:15", endTime: "2021-12-10 16:50", roomId: 3, hostId:14, guests: [2,3,4,5]},
 // ]
 
+// This component contains test data with Context.
+// Meeting list under the service tab
 const MeetingList = () => {
 
     // uncomment to test frontend only

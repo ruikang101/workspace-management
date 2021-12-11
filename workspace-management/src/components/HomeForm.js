@@ -5,6 +5,7 @@ import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import { useNavigate } from 'react-router-dom';
 
+// Parent component of the login form and the signup form
 class InnerHomeForm extends Component {
 
   constructor(props) {

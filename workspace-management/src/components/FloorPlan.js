@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Radio, Row, Col } from 'antd';
 import './FloorPlan.css';
-import pointInSvgPolygon from 'point-in-svg-polygon';
 
 // test data
 const rooms = [
@@ -17,6 +16,7 @@ const rooms = [
 
 ]
 
+// This is a static floor plan indicating the room number, size and type
 class FloorPlan extends Component {
 
   constructor(props) {
@@ -53,14 +53,6 @@ class FloorPlan extends Component {
         </div>
       )
     }
-
-    // bathroom 2/floor
-    // small meeting room
-    // middle meeting room
-    // large meeting room
-    // gym 1st floor
-    // dinning room 2nd floor
-    // Lounge 1/floor
 
     const color = "#3e7086"
     const density = 1.00
@@ -126,56 +118,13 @@ class FloorPlan extends Component {
       )
     }
 
-    const Floor2 = () => {
-      return (
-        <svg className="floor" width="800" height="450">
-          <rect x="0" y="0" width="200" height="180" className="meetingroom" type="large" />
-          <rect x="0" y="270" width="200" height="180" className="meetingroom" type="large" />
-          {/* <rect x="200" y="0" width="80" height="100" className="bathroom" type="large" />
-          <rect x="200" y="350" width="80" height="100" className="bathroom" type="large" />
-          <rect x="360" y="0" width="100" height="100" className="meetingroom" type="small" />
-          <rect x="360" y="350" width="100" height="100" className="meetingroom" type="small" />
-          <rect x="460" y="0" width="100" height="100" className="meetingroom" type="small" />
-          <rect x="460" y="350" width="100" height="100" className="meetingroom" type="small" />
-          <rect x="600" y="0" width="200" height="450" className="diningroom"/>
-          <rect x="260" y="150" width="300" height="150" className="cubicle"/>
-          <line x1="260" y1="225" x2="560" y2="225" className="line" />
-          <line x1="335" y1="150" x2="335" y2="300" className="line" />
-          <line x1="410" y1="150" x2="410" y2="300" className="line" />
-          <line x1="485" y1="150" x2="485" y2="300" className="line" /> */}
-        </svg>
-      )
-    }
-
-    const Floor3 = () => {
-      return (
-        <svg className="floor" width="800" height="450">
-          {/* <rect x="0" y="0" width="200" height="180" className="meetingroom" type="large" />
-          <rect x="0" y="270" width="200" height="180" className="meetingroom" type="large" />
-          <rect x="200" y="0" width="80" height="100" className="bathroom" type="large" />
-          <rect x="200" y="350" width="80" height="100" className="bathroom" type="large" />
-          <rect x="360" y="0" width="100" height="100" className="meetingroom" type="small" />
-          <rect x="360" y="350" width="100" height="100" className="meetingroom" type="small" />
-          <rect x="460" y="0" width="100" height="100" className="meetingroom" type="small" />
-          <rect x="460" y="350" width="100" height="100" className="meetingroom" type="small" />
-          <rect x="600" y="0" width="200" height="450" className="diningroom"/>
-          <rect x="260" y="150" width="300" height="150" className="cubicle"/> */}
-          <line x1="260" y1="225" x2="560" y2="225" className="line" />
-          <line x1="335" y1="150" x2="335" y2="300" className="line" />
-          <line x1="410" y1="150" x2="410" y2="300" className="line" />
-          <line x1="485" y1="150" x2="485" y2="300" className="line" />
-        </svg>
-      )
-    }
-
-
     return (
       <div className="FloorPlan">
         {SelectFloor()}
         <div className="canvas">
           {this.state.floor === 1 && <Floor1 />}
-          {this.state.floor === 2 && <Floor2 />}
-          {this.state.floor === 3 && <Floor3 />}
+          {/* {this.state.floor === 2 && <Floor2 />}
+          {this.state.floor === 3 && <Floor3 />} */}
         </div>
       </div>
     )
