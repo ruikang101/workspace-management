@@ -1,5 +1,6 @@
 package tcss556.services.exceptions;
 
+/** InternalException is used to indicate error related to bad user input. */
 public class InvalidInputException extends RuntimeException {
   public InvalidInputException() {
     super();

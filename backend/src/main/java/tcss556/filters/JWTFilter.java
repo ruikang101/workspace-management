@@ -13,6 +13,11 @@ import tcss556.utils.auth.ValidationResult;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * This class is used to server as a JWT authorization filter. All the requests except for create
+ * user request, get weather request and user login request require a valid JWT otherwise will be
+ * rejected.
+ */
 @Slf4j
 @Component
 public class JWTFilter implements HandlerInterceptor {

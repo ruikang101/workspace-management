@@ -18,7 +18,7 @@ import tcss556.services.exceptions.InternalException;
 
 import javax.annotation.Resource;
 import java.io.IOException;
-
+/** Room services class serves all the requests to get the weather info of the server location. */
 @Slf4j
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -28,6 +28,11 @@ public class WeatherService {
   @Resource private ObjectMapper mapper;
   @Resource private InetAddressValidator validator;
 
+  /**
+   * Get weather information of current location
+   *
+   * @return weather info.
+   */
   @GetMapping(value = "/", produces = "application/json")
   public String getWeather() {
     try (CloseableHttpClient client = HttpClients.createDefault()) {

@@ -12,6 +12,7 @@ import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
+/** SOAP web service related configurations. Define the endpoint URL and wsdl definition. */
 @EnableWs
 @Configuration
 public class WSConfig extends WsConfigurerAdapter {

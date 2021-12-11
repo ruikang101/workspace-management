@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/** Room services class serves all the requests related to room entity. */
 @Slf4j
 @RestController
 @RequestMapping("/rooms")
@@ -40,6 +41,12 @@ public class RoomServices {
   @Resource(name = "roomConverter")
   private ResourceConverter<RoomEntity, RoomData> roomConverter;
 
+  /**
+   * Create a room.
+   *
+   * @param request includes all necessary to create a room
+   * @return generated room entity
+   */
   @PostMapping(
       value = "/",
       consumes = {"application/json"},
@@ -56,6 +63,12 @@ public class RoomServices {
     }
   }
 
+  /**
+   * List rooms
+   *
+   * @param floor which rooms locate (optional)
+   * @return List of room entity.
+   */
   @GetMapping(
       value = "/",
       produces = {"application/json"})
@@ -71,6 +84,12 @@ public class RoomServices {
     return entities.stream().map(roomConverter::convert).collect(Collectors.toList());
   }
 
+  /**
+   * Get a room
+   *
+   * @param roomId of the target room.
+   * @return room entity.
+   */
   @GetMapping(value = "/{roomId}", produces = "application/json")
   @ResponseBody
   public RoomData getRoom(@PathVariable("roomId") Long roomId) {
@@ -81,6 +100,13 @@ public class RoomServices {
     return roomConverter.convert(optionalRoomEntity.get());
   }
 
+  /**
+   * Update an existing room
+   *
+   * @param roomId of target to update
+   * @param request includes necessary to update the entity
+   * @return Updated entity.
+   */
   @PutMapping(value = "/{roomId}", produces = "application/json", consumes = "application/json")
   @ResponseBody
   public RoomData updateRoom(
@@ -92,6 +118,11 @@ public class RoomServices {
     return roomConverter.convert(originalEntity);
   }
 
+  /**
+   * Delete a room
+   *
+   * @param roomId of target room
+   */
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @DeleteMapping(value = "/{roomId}")
   public void deleteRoom(@PathVariable("roomId") long roomId) {

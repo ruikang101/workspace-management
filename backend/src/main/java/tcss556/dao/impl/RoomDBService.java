@@ -15,6 +15,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/** The RoomDBService class implements the CRUD related operations for on {@link RoomEntity} */
 @Slf4j
 @Service
 @Profile(AppConstants.PROD_ENV)
@@ -39,7 +40,9 @@ public class RoomDBService implements RoomRepository {
   @Override
   public List<RoomEntity> listRoomByFloor(Integer floor) {
     return ImmutableList.copyOf(
-        listRooms().stream().filter(entity -> Objects.equals(entity.getFloor(), floor)).collect(Collectors.toList()));
+        listRooms().stream()
+            .filter(entity -> Objects.equals(entity.getFloor(), floor))
+            .collect(Collectors.toList()));
   }
 
   @Override

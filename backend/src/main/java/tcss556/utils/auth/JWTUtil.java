@@ -11,6 +11,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.util.Date;
 import java.util.UUID;
 
+/** This class has all the utility methods used to generate and validate JWT token. */
 public class JWTUtil {
   private static final SecretKey secretKey =
       new SecretKeySpec(AppConstants.JWT_KEY.getBytes(), "AES");
@@ -38,6 +39,12 @@ public class JWTUtil {
     return builder.compact();
   }
 
+  /**
+   * Valid the token.
+   *
+   * @param token from request.
+   * @return ValidateResult including user info and validation result.
+   */
   public static ValidationResult validateToken(String token) {
     ValidationResult.ValidationResultBuilder builder = ValidationResult.builder();
     try {
@@ -49,6 +56,12 @@ public class JWTUtil {
     return builder.build();
   }
 
+  /**
+   * Get claims from token
+   *
+   * @param token request token
+   * @return JWT Claims.
+   */
   public static Claims extractClaims(String token) {
     return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
   }

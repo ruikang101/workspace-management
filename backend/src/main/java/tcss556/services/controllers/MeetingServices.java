@@ -21,6 +21,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/** Room services class serves all the requests related to meeting entity. */
 @Slf4j
 @RestController
 @RequestMapping("/meetings")
@@ -35,6 +36,12 @@ public class MeetingServices {
   @Resource private RoomServices roomServices;
   @Resource private UserServices userServices;
 
+  /**
+   * Create a meeting.
+   *
+   * @param req Create meeting request with all necessary info.
+   * @return generated meeting entity.
+   */
   @PostMapping("/")
   @ResponseBody
   public MeetingData createMeeting(@RequestBody CreateMeetingData req) {
@@ -45,6 +52,13 @@ public class MeetingServices {
     return meetingDataResourceConverter.convert(internalEntity);
   }
 
+  /**
+   * List meetings.
+   *
+   * @param userId of the meeting host to filter
+   * @param roomId of the meeting room to filter
+   * @return List of meeting
+   */
   @GetMapping("/")
   @ResponseBody
   public List<MeetingData> listMeetings(
@@ -56,6 +70,12 @@ public class MeetingServices {
         .collect(Collectors.toList());
   }
 
+  /**
+   * Get a meeting
+   *
+   * @param meetingId of target entity
+   * @return target meeting.
+   */
   @GetMapping("/{meetingId}")
   @ResponseBody
   public MeetingData getMeeting(@PathVariable("meetingId") Long meetingId) {
@@ -65,6 +85,11 @@ public class MeetingServices {
             .orElseThrow(() -> new ResourceNotFoundException("Meeting", meetingId)));
   }
 
+  /**
+   * Delete a meeting
+   *
+   * @param meetingId of target entity
+   */
   @DeleteMapping("/{meetingId}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void deleteMeeting(@PathVariable Long meetingId) {
@@ -73,6 +98,13 @@ public class MeetingServices {
     }
   }
 
+  /**
+   * Update an existing meeting
+   *
+   * @param meetingId of target meeting
+   * @param req Update meeting request with all updated fields.
+   * @return updated entity.
+   */
   @PutMapping("/{meetingId}")
   @ResponseBody
   public MeetingData updateMeeting(
@@ -83,6 +115,7 @@ public class MeetingServices {
             .orElseThrow(() -> new InvalidInputException("meeting id:" + meetingId));
     updateMeetingConverter.convertUpdate(entity, req);
     validateMeeting(entity);
+    repository.updateMeeting(entity);
     return loadMeetingData(
         repository
             .getMeeting(meetingId)
@@ -111,9 +144,8 @@ public class MeetingServices {
           "guest id: "
               + missedGuestIds.stream().map(String::valueOf).collect(Collectors.joining(",")));
     }
-    List<MeetingEntity> hostMeetings =
-        repository.listMeetings(meetingEntity.getHostId(), null);
-    List<MeetingEntity> roomMeetings = repository.listMeetings(null , meetingEntity.getRoomId());
+    List<MeetingEntity> hostMeetings = repository.listMeetings(meetingEntity.getHostId(), null);
+    List<MeetingEntity> roomMeetings = repository.listMeetings(null, meetingEntity.getRoomId());
     if (hostMeetings.stream()
         .anyMatch(
             entity ->
@@ -123,15 +155,21 @@ public class MeetingServices {
       throw new InvalidInputException("Host is busy");
     }
     if (roomMeetings.stream()
-            .anyMatch(
-                    entity ->
-                            !Objects.equals(entity.getId(), meetingEntity.getId())
-                                    && !(entity.getEndTime().before(meetingEntity.getStartTime())
-                                    || entity.getStartTime().after(meetingEntity.getEndTime())))) {
+        .anyMatch(
+            entity ->
+                !Objects.equals(entity.getId(), meetingEntity.getId())
+                    && !(entity.getEndTime().before(meetingEntity.getStartTime())
+                        || entity.getStartTime().after(meetingEntity.getEndTime())))) {
       throw new InvalidInputException("Room is in use.");
     }
   }
 
+  /**
+   * Load user data and room data to build the external meeting data entity.
+   *
+   * @param entity Target meeting entity.
+   * @return External meeting model.
+   */
   private MeetingData loadMeetingData(MeetingEntity entity) {
     MeetingData data = meetingDataResourceConverter.convert(entity);
     data.setRoom(roomServices.getRoom(entity.getRoomId()));

@@ -7,6 +7,7 @@ import tcss556.services.models.RoomType;
 
 import javax.persistence.*;
 
+/** Room entity model. */
 @Builder
 @Entity
 @Table

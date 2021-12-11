@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+/** Meeting entity model. */
 @Builder
 @Entity
 @Table

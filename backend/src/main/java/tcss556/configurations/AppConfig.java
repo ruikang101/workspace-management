@@ -13,6 +13,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+/** Configurations of the application. Define beans and customize authorization interceptor. */
 @Configuration
 public class AppConfig implements WebMvcConfigurer {
 

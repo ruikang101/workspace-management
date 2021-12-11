@@ -60,8 +60,7 @@ public class MockedMeetingRepository implements MeetingRepository {
   }
 
   @Override
-  public MeetingEntity updateMeeting(MeetingEntity entity) {
+  public void updateMeeting(MeetingEntity entity) {
     meetingEntityMap.put(entity.getId(), entity);
-    return entity;
   }
 }

@@ -2,7 +2,6 @@ package tcss556.dao.impl;
 
 import com.google.common.collect.ImmutableList;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -15,6 +14,7 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Optional;
 
+/** The UserDBServices class implements the CRUD related operations for on {@link UserEntity} */
 @Slf4j
 @Profile(AppConstants.PROD_ENV)
 @Service
@@ -42,7 +42,7 @@ public class UserDBServices implements UserRepository {
     try {
       repository.deleteById(userId);
       return true;
-    }catch (EmptyResultDataAccessException e){
+    } catch (EmptyResultDataAccessException e) {
       log.error("failed to delete user {}", userId, e);
       throw new InvalidInputException("user:" + userId);
     }
@@ -52,7 +52,6 @@ public class UserDBServices implements UserRepository {
   public void updateUser(UserEntity entity) {
     repository.save(entity);
   }
-
 
   @Override
   public Optional<UserEntity> getUserByUserName(String userName) {

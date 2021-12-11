@@ -15,6 +15,9 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * The MeetingDBServices class implements the CRUD related operations for on {@link MeetingEntity}
+ */
 @Slf4j
 @Service
 @Profile(AppConstants.PROD_ENV)
@@ -52,7 +55,7 @@ public class MeetingDBServices implements MeetingRepository {
   }
 
   @Override
-  public MeetingEntity updateMeeting(MeetingEntity entity) {
-    return repository.save(entity);
+  public void updateMeeting(MeetingEntity entity) {
+    repository.save(entity);
   }
 }

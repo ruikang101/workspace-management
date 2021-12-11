@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/** Room services class serves all the requests related to user entity. */
 @Slf4j
 @RestController
 @RequestMapping("/users")
@@ -33,6 +34,12 @@ public class UserServices {
 
   @Resource private ResourceConverter<UpdateUserData, UserEntity> updateUserConverter;
 
+  /**
+   * Create a user
+   *
+   * @param request Create user request.
+   * @return generated entity.
+   */
   @PostMapping(value = "/", consumes = "application/json")
   @ResponseBody
   public UserData createUser(@RequestBody CreateUserData request) {
@@ -41,12 +48,23 @@ public class UserServices {
     return userConverter.convert(entity);
   }
 
+  /**
+   * List users.
+   *
+   * @return List of user.
+   */
   @GetMapping("/")
   @ResponseBody
   public List<UserData> listUsers() {
     return repository.listUsers().stream().map(userConverter::convert).collect(Collectors.toList());
   }
 
+  /**
+   * Get a user by id.
+   *
+   * @param userId of target entity.
+   * @return target entity.
+   */
   @GetMapping("/{userId}")
   @ResponseBody
   public UserData getUser(@PathVariable("userId") long userId) {
@@ -55,6 +73,13 @@ public class UserServices {
         optionalUserEntity.orElseThrow(() -> new ResourceNotFoundException("user " + userId)));
   }
 
+  /**
+   * Update a user entity.
+   *
+   * @param userId of target entity.
+   * @param request Update user request.
+   * @return update user entity
+   */
   @PutMapping(value = "/{userId}", consumes = "application/json", produces = "application/json")
   @ResponseBody
   public UserData updateUser(
@@ -66,6 +91,11 @@ public class UserServices {
     return userConverter.convert(entity);
   }
 
+  /**
+   * Delete a user
+   *
+   * @param userId of target entity.
+   */
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @DeleteMapping(value = "/{userId}")
   public void deleteUser(@PathVariable("userId") long userId) {

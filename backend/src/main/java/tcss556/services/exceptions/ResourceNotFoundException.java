@@ -1,5 +1,5 @@
 package tcss556.services.exceptions;
-
+/** InternalException is used to indicate error related to resource not found */
 public class ResourceNotFoundException extends RuntimeException {
 
   public ResourceNotFoundException() {

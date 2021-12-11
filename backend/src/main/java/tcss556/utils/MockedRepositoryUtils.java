@@ -13,8 +13,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/** This class is used help load JSON data into mocked repository. */
 @Slf4j
 public class MockedRepositoryUtils {
+  /**
+   * Load data from JSON file.
+   *
+   * @param fileName the name of JSON file to load.
+   * @param target target class type to deserialize
+   * @param <T> generic type
+   * @return List of deserialized object.
+   */
   public static <T> List<T> loadJsonData(String fileName, Class<T> target) {
     URL url = ClassLoader.getSystemClassLoader().getResource(".");
     if (url == null) {
